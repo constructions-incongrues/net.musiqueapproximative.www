@@ -35,4 +35,10 @@ class postActions extends sfActions
     $this->post_next = Doctrine::getTable('Post')->getNextPost($post);
     $this->post_previous = Doctrine::getTable('Post')->getPreviousPost($post);
   }
+
+  public function executeList(sfWebRequest $request)
+  {
+    $posts = Doctrine::getTable('Post')->getOnlinePosts();
+    $this->posts = $posts;
+  }
 }

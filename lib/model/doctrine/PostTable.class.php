@@ -36,4 +36,10 @@ class PostTable extends Doctrine_Table
     // Stub
     return $this->find(1);
   }
+
+  public function getOnlinePosts()
+  {
+    // Stub
+    return $this->findAll();
+  }
 }

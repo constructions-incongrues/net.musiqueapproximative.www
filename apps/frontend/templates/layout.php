@@ -9,6 +9,7 @@
     <?php include_javascripts() ?>
   </head>
   <body>
+    <p><?php echo link_to('Browse all tracks', '@post_list') ?></p>
     <?php echo $sf_content ?>
   </body>
 </html>
