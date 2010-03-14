@@ -4,7 +4,11 @@
 # default rules
 homepage:
   url:   /
-  param: { module: default, action: index }
+  param: { module: post, action: show }
+
+post_show:
+  url:  /post/:id
+  param: {module: post, action: show }
 
 # generic rules
 # please, remove them by adding more specific rules

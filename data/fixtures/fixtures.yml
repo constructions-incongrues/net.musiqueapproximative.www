@@ -1,17 +1,13 @@
-# # Populate this file with data to be loaded by your ORM's *:data-load task.
-# # You can create multiple files in this directory (i.e. 010_users.yml,
-# # 020_articles.yml, etc) which will be loaded in alphabetical order.
-# # 
-# # See documentation for your ORM's *:data-load task for more information.
-# 
-# User:
-#   fabien:
-#     username: fabien
-#     password: changeme
-#     name:     Fabien Potencier
-#     email:    fabien.potencier@symfony-project.com
-#   kris:
-#     username: Kris.Wallsmith
-#     password: changeme
-#     name:     Kris Wallsmith
-#     email:    kris.wallsmith@symfony-project.com
+Post:
+<?php for ($i = 0; $i < 500; $i++): ?>
+  post_<?php echo $i ?>:
+    body: body_<?php echo $i."\n" ?>
+    track_title: title_<?php echo $i."\n" ?>
+    track_author: author_<?php echo $i."\n" ?>
+    track_filename: filename_<?php echo $i."\n" ?>
+    track_md5: <?php echo md5($i)."\n" ?>
+    svn_revision: <?php echo $i."\n" ?>
+    created_on: <?php echo date('Y-m-d H:i:s', time() + rand(0, 500000))."'\n"; ?>
+    publish_on: <?php echo date('Y-m-d H:i:s', time() + rand(0, 500000))."'\n"; ?>
+    is_online: <?php echo rand(0, 1)."\n" ?>
+<?php endfor; ?>
