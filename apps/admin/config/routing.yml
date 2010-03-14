@@ -1,3 +1,12 @@
+post:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Post
+    module:               post
+    prefix_path:          /post
+    column:               id
+    with_wildcard_routes: true
+
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 

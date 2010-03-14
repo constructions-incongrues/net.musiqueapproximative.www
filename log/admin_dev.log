@@ -1,0 +1,124 @@
+Mar 14 19:29:21 symfony [info] {sfPatternRouting} Match route "post" (/post.:sf_format) for /post with parameters array (  'module' => 'post',  'action' => 'index',  'sf_format' => 'html',)
+Mar 14 19:29:22 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Mar 14 19:29:22 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Mar 14 19:29:22 symfony [info] {postActions} Call "postActions->executeIndex()"
+Mar 14 19:29:22 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Mar 14 19:29:22 symfony [info] {Doctrine_Connection_Mysql} query : SELECT COUNT(*) AS num_results FROM post p - ()
+Mar 14 19:29:22 symfony [info] {sfPHPView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/indexSuccess.php"
+Mar 14 19:29:22 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_assets.php"
+Mar 14 19:29:22 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_flashes.php"
+Mar 14 19:29:22 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_list_header.php"
+Mar 14 19:29:22 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters.php"
+Mar 14 19:29:22 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters_field.php"
+Mar 14 19:29:22 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters_field.php"
+Mar 14 19:29:22 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters_field.php"
+Mar 14 19:29:22 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters_field.php"
+Mar 14 19:29:22 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters_field.php"
+Mar 14 19:29:22 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters_field.php"
+Mar 14 19:29:22 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters_field.php"
+Mar 14 19:29:22 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters_field.php"
+Mar 14 19:29:22 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters_field.php"
+Mar 14 19:29:22 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_list.php"
+Mar 14 19:29:22 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_list_batch_actions.php"
+Mar 14 19:29:22 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_list_actions.php"
+Mar 14 19:29:22 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_list_footer.php"
+Mar 14 19:29:22 symfony [info] {sfPHPView} Decorate content with "/home/trivoallan/NetBeansProjects/musiqueapproximative/apps/admin/templates/layout.php"
+Mar 14 19:29:22 symfony [info] {sfPHPView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/apps/admin/templates/layout.php"
+Mar 14 19:29:22 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Mar 14 19:29:22 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Mar 14 19:29:22 symfony [info] {sfWebDebugLogger} Configuration 527.01 ms (11)
+Mar 14 19:29:22 symfony [info] {sfWebDebugLogger} Factories 291.71 ms (1)
+Mar 14 19:29:22 symfony [info] {sfWebDebugLogger} Action "post/index" 338.37 ms (1)
+Mar 14 19:29:22 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.04 ms (2)
+Mar 14 19:29:22 symfony [info] {sfWebDebugLogger} View "Success" for "post/index" 231.31 ms (1)
+Mar 14 19:29:22 symfony [info] {sfWebDebugLogger} Partial "post/_assets" 3.47 ms (1)
+Mar 14 19:29:22 symfony [info] {sfWebDebugLogger} Partial "post/_flashes" 3.58 ms (1)
+Mar 14 19:29:22 symfony [info] {sfWebDebugLogger} Partial "post/_list_header" 3.12 ms (1)
+Mar 14 19:29:22 symfony [info] {sfWebDebugLogger} Partial "post/_filters" 148.80 ms (1)
+Mar 14 19:29:22 symfony [info] {sfWebDebugLogger} Partial "post/_filters_field" 108.11 ms (9)
+Mar 14 19:29:22 symfony [info] {sfWebDebugLogger} Partial "post/_list" 1.56 ms (1)
+Mar 14 19:29:22 symfony [info] {sfWebDebugLogger} Partial "post/_list_batch_actions" 2.21 ms (1)
+Mar 14 19:29:22 symfony [info] {sfWebDebugLogger} Partial "post/_list_actions" 1.59 ms (1)
+Mar 14 19:29:22 symfony [info] {sfWebDebugLogger} Partial "post/_list_footer" 1.21 ms (1)
+Mar 14 19:29:23 symfony [info] {sfWebResponse} Send content (187912 o)
+Mar 14 19:29:37 symfony [info] {sfPatternRouting} Match route "post" (/post.:sf_format) for /post with parameters array (  'module' => 'post',  'action' => 'index',  'sf_format' => 'html',)
+Mar 14 19:29:37 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Mar 14 19:29:37 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Mar 14 19:29:37 symfony [info] {postActions} Call "postActions->executeIndex()"
+Mar 14 19:29:37 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Mar 14 19:29:37 symfony [info] {Doctrine_Connection_Mysql} query : SELECT COUNT(*) AS num_results FROM post p - ()
+Mar 14 19:29:37 symfony [info] {sfPHPView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/indexSuccess.php"
+Mar 14 19:29:37 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_assets.php"
+Mar 14 19:29:37 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_flashes.php"
+Mar 14 19:29:37 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_list_header.php"
+Mar 14 19:29:37 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters.php"
+Mar 14 19:29:37 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters_field.php"
+Mar 14 19:29:37 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters_field.php"
+Mar 14 19:29:37 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters_field.php"
+Mar 14 19:29:37 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters_field.php"
+Mar 14 19:29:37 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters_field.php"
+Mar 14 19:29:37 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters_field.php"
+Mar 14 19:29:37 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters_field.php"
+Mar 14 19:29:37 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters_field.php"
+Mar 14 19:29:37 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_filters_field.php"
+Mar 14 19:29:37 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_list.php"
+Mar 14 19:29:37 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_list_batch_actions.php"
+Mar 14 19:29:37 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_list_actions.php"
+Mar 14 19:29:37 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_list_footer.php"
+Mar 14 19:29:37 symfony [info] {sfPHPView} Decorate content with "/home/trivoallan/NetBeansProjects/musiqueapproximative/apps/admin/templates/layout.php"
+Mar 14 19:29:37 symfony [info] {sfPHPView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/apps/admin/templates/layout.php"
+Mar 14 19:29:37 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Mar 14 19:29:37 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Mar 14 19:29:37 symfony [info] {sfWebDebugLogger} Configuration 2.81 ms (10)
+Mar 14 19:29:37 symfony [info] {sfWebDebugLogger} Factories 11.12 ms (1)
+Mar 14 19:29:37 symfony [info] {sfWebDebugLogger} Action "post/index" 27.08 ms (1)
+Mar 14 19:29:37 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.02 ms (2)
+Mar 14 19:29:37 symfony [info] {sfWebDebugLogger} View "Success" for "post/index" 93.42 ms (1)
+Mar 14 19:29:37 symfony [info] {sfWebDebugLogger} Partial "post/_assets" 1.32 ms (1)
+Mar 14 19:29:37 symfony [info] {sfWebDebugLogger} Partial "post/_flashes" 1.42 ms (1)
+Mar 14 19:29:37 symfony [info] {sfWebDebugLogger} Partial "post/_list_header" 1.21 ms (1)
+Mar 14 19:29:37 symfony [info] {sfWebDebugLogger} Partial "post/_filters" 71.36 ms (1)
+Mar 14 19:29:37 symfony [info] {sfWebDebugLogger} Partial "post/_filters_field" 58.90 ms (9)
+Mar 14 19:29:37 symfony [info] {sfWebDebugLogger} Partial "post/_list" 1.66 ms (1)
+Mar 14 19:29:37 symfony [info] {sfWebDebugLogger} Partial "post/_list_batch_actions" 2.13 ms (1)
+Mar 14 19:29:37 symfony [info] {sfWebDebugLogger} Partial "post/_list_actions" 1.61 ms (1)
+Mar 14 19:29:37 symfony [info] {sfWebDebugLogger} Partial "post/_list_footer" 1.31 ms (1)
+Mar 14 19:29:37 symfony [info] {sfWebResponse} Send content (187974 o)
+Mar 14 19:29:43 symfony [info] {sfPatternRouting} Match route "post_new" (/post/new.:sf_format) for /post/new with parameters array (  'module' => 'post',  'action' => 'new',  'sf_format' => 'html',)
+Mar 14 19:29:43 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Mar 14 19:29:43 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Mar 14 19:29:43 symfony [info] {postActions} Call "postActions->executeNew()"
+Mar 14 19:29:43 symfony [info] {sfPHPView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/newSuccess.php"
+Mar 14 19:29:43 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_assets.php"
+Mar 14 19:29:43 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_flashes.php"
+Mar 14 19:29:43 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_form_header.php"
+Mar 14 19:29:43 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_form.php"
+Mar 14 19:29:43 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_form_fieldset.php"
+Mar 14 19:29:43 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_form_field.php"
+Mar 14 19:29:43 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_form_field.php"
+Mar 14 19:29:43 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_form_field.php"
+Mar 14 19:29:43 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_form_field.php"
+Mar 14 19:29:43 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_form_field.php"
+Mar 14 19:29:43 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_form_field.php"
+Mar 14 19:29:43 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_form_field.php"
+Mar 14 19:29:43 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_form_field.php"
+Mar 14 19:29:43 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_form_field.php"
+Mar 14 19:29:43 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_form_actions.php"
+Mar 14 19:29:43 symfony [info] {sfPartialView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/cache/admin/dev/modules/autoPost/templates/_form_footer.php"
+Mar 14 19:29:43 symfony [info] {sfPHPView} Decorate content with "/home/trivoallan/NetBeansProjects/musiqueapproximative/apps/admin/templates/layout.php"
+Mar 14 19:29:43 symfony [info] {sfPHPView} Render "/home/trivoallan/NetBeansProjects/musiqueapproximative/apps/admin/templates/layout.php"
+Mar 14 19:29:43 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Mar 14 19:29:43 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Mar 14 19:29:43 symfony [info] {sfWebDebugLogger} Configuration 3.95 ms (10)
+Mar 14 19:29:43 symfony [info] {sfWebDebugLogger} Factories 8.76 ms (1)
+Mar 14 19:29:43 symfony [info] {sfWebDebugLogger} Action "post/new" 102.04 ms (1)
+Mar 14 19:29:43 symfony [info] {sfWebDebugLogger} View "Success" for "post/new" 55.63 ms (1)
+Mar 14 19:29:43 symfony [info] {sfWebDebugLogger} Partial "post/_assets" 1.26 ms (1)
+Mar 14 19:29:43 symfony [info] {sfWebDebugLogger} Partial "post/_flashes" 1.22 ms (1)
+Mar 14 19:29:43 symfony [info] {sfWebDebugLogger} Partial "post/_form_header" 1.32 ms (1)
+Mar 14 19:29:43 symfony [info] {sfWebDebugLogger} Partial "post/_form" 36.21 ms (1)
+Mar 14 19:29:43 symfony [info] {sfWebDebugLogger} Partial "post/_form_fieldset" 28.59 ms (1)
+Mar 14 19:29:43 symfony [info] {sfWebDebugLogger} Partial "post/_form_field" 19.94 ms (9)
+Mar 14 19:29:43 symfony [info] {sfWebDebugLogger} Partial "post/_form_actions" 2.08 ms (1)
+Mar 14 19:29:43 symfony [info] {sfWebDebugLogger} Partial "post/_form_footer" 1.33 ms (1)
+Mar 14 19:29:43 symfony [info] {sfWebResponse} Send content (173337 o)

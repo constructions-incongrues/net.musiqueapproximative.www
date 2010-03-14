@@ -4,3 +4,4 @@ lib/form/doctrine/base/*
 lib/model/doctrine/base/*
 lib/filter/doctrine/base/*
 data/sql/schema.sql
+web/sfDoctrinePlugin
