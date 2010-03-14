@@ -1,5 +1,6 @@
 web/sf
-cache/admin
+cache/*
+log/*
 lib/form/doctrine/base/*
 lib/model/doctrine/base/*
 lib/filter/doctrine/base/*
