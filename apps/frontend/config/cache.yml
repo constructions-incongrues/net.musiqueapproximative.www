@@ -5,3 +5,7 @@ default:
   enabled:     false
   with_layout: false
   lifetime:    86400
+
+prod:
+  enabled: true
+  with_layout: true
