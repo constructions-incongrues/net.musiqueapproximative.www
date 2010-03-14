@@ -1,0 +1,16 @@
+Post:
+  columns:
+    id:
+      type: integer
+      autoincrement: true
+      primary: true
+      notnull: true
+    body: string
+    track_title: string
+    track_author: string
+    track_filename: string
+    track_md5: string(32)
+    svn_revision: integer
+    created_on: datetime
+    publish_on: datetime
+    is_online: bool
