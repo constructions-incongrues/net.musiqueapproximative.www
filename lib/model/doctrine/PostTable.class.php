@@ -2,6 +2,8 @@
 
 class PostTable extends Doctrine_Table
 {
+  const FIELDS_BASIC = 'p.body, p.track_title, p.track_author, p.track_filename';
+
   /**
    * Returns last online post.
    * 
@@ -9,8 +11,16 @@ class PostTable extends Doctrine_Table
    */
   public function getLastPost()
   {
-    // Stub
-    return $this->find(1);
+    $q = Doctrine_Query::create()
+      ->select(self::FIELDS_BASIC)
+      ->from('Post p')
+      ->where('p.is_online = 1 and p.publish_on >= now()')
+      ->orderBy('p.publish_on DESC')
+      ->limit(1);
+    $post = $q->fetchOne();
+    $q->free();
+
+    return $post;
   }
 
   /**
@@ -21,8 +31,16 @@ class PostTable extends Doctrine_Table
    */
   public function getNextPost(Post $post)
   {
-    // Stub
-    return $this->find(1);
+    $q = Doctrine_Query::create()
+      ->select(self::FIELDS_BASIC)
+      ->from('Post p')
+      ->where('p.is_online = 1 and p.publish_on > ?')
+      ->orderBy('p.publish_on ASC')
+      ->limit(1);
+    $post = $q->fetchOne(array($post->publish_on));
+    $q->free();
+
+    return $post;
   }
 
   /**
@@ -33,13 +51,30 @@ class PostTable extends Doctrine_Table
    */
   public function getPreviousPost(Post $post)
   {
-    // Stub
-    return $this->find(1);
+    $q = Doctrine_Query::create()
+      ->select(self::FIELDS_BASIC)
+      ->from('Post p')
+      ->where('p.is_online = 1 and p.publish_on < ?')
+      ->orderBy('p.publish_on DESC')
+      ->limit(1);
+    $post = $q->fetchOne(array($post->publish_on));
+    $q->free();
+
+    return $post;
   }
 
-  public function getOnlinePosts()
+  public function getOnlinePosts($count = null)
   {
-    // Stub
-    return $this->findAll();
+    $q = Doctrine_Query::create()
+      ->select(self::FIELDS_BASIC)
+      ->from('Post p')
+      ->where('p.is_online = 1')
+      ->orderBy('p.publish_on DESC');
+    if ($count)
+    {
+      $q->limit($count);
+    }
+      
+    return $q->execute();
   }
 }
