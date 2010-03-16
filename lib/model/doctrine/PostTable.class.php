@@ -14,7 +14,7 @@ class PostTable extends Doctrine_Table
     $q = Doctrine_Query::create()
       ->select(self::FIELDS_BASIC)
       ->from('Post p')
-      ->where('p.is_online = 1 and p.publish_on >= now()')
+      ->where('p.is_online = 1 and p.publish_on <= now()')
       ->orderBy('p.publish_on DESC')
       ->limit(1);
     $post = $q->fetchOne();
