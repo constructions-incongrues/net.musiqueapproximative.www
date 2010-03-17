@@ -24,7 +24,7 @@ class postActions extends sfActions
     }
     else
     {
-      $post = Doctrine::getTable('Post')->getOnlinePost($request->getParameter('slug'));
+      $post = Doctrine::getTable('Post')->getOnlinePostBySlug($request->getParameter('slug'));
     }
 
     // Throw a 404 error if no post is found
@@ -39,6 +39,21 @@ class postActions extends sfActions
   public function executeList(sfWebRequest $request)
   {
     $posts = Doctrine::getTable('Post')->getOnlinePosts();
+    $this->posts = $posts;
+  }
+
+  public function executeSearch(sfWebRequest $request)
+  {
+    $results = Doctrine::getTable('Post')->search($request->getParameter('q'));
+    $posts = array();
+    foreach ($results as $result)
+    {
+      $post = Doctrine::getTable('Post')->getOnlinePostById($result['id']);
+      if ($post)
+      {
+        $posts[] = $post;
+      }
+    }
     $this->posts = $posts;
   }
 }

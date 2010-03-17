@@ -10,6 +10,12 @@
   </head>
   <body>
     <p><?php echo link_to('Browse all tracks', '@post_list') ?></p>
+    <p>
+      <form method="get" action="<?php echo url_for('@post_search') ?>">
+        <input type="text" name="q" value="<?php echo $sf_request->getParameter('q') ?>"/>
+        <input type="submit" value="Search !" />
+      </form>
+    </p>
     <?php echo $sf_content ?>
   </body>
 </html>

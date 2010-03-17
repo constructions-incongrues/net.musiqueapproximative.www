@@ -2,7 +2,7 @@
 
 class PostTable extends Doctrine_Table
 {
-  const FIELDS_BASIC = 'p.body, p.track_title, p.track_author, p.track_filename';
+  const FIELDS_BASIC = 'p.body, p.track_title, p.track_author, p.track_filename, p.slug';
 
   /**
    * Returns last online post.
@@ -23,13 +23,25 @@ class PostTable extends Doctrine_Table
     return $post;
   }
 
-  public function getOnlinePost($post_slug)
+  public function getOnlinePostBySlug($post_slug)
   {
     $q = Doctrine_Query::create()
       ->select(self::FIELDS_BASIC)
       ->from('Post p')
       ->where('p.is_online = 1 and p.publish_on <= now() and p.slug = ?');
     $post = $q->fetchOne(array($post_slug));
+    $q->free();
+
+    return $post;
+  }
+
+  public function getOnlinePostById($post_id)
+  {
+    $q = Doctrine_Query::create()
+      ->select(self::FIELDS_BASIC)
+      ->from('Post p')
+      ->where('p.is_online = 1 and p.publish_on <= now() and p.id = ?');
+    $post = $q->fetchOne(array($post_id));
     $q->free();
 
     return $post;

@@ -13,3 +13,7 @@ post_show:
 post_list:
   url: /posts
   param: { module: post, action: list }
+
+post_search:
+  url: /search
+  param: { module: post, action: search }

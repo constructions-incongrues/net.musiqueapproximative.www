@@ -3,6 +3,8 @@ Post:
     Timestampable:
     Sluggable:
       fields: [track_author, track_title]
+    Searchable:
+      fields: [track_author, track_title]
   columns:
     id:
       type: integer
