@@ -7,7 +7,7 @@ homepage:
   param: { module: post, action: show }
 
 post_show:
-  url:  /post/:id
+  url:  /post/:slug
   param: { module: post, action: show }
 
 post_list:

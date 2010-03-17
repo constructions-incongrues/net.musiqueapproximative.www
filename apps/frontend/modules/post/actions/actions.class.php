@@ -18,13 +18,13 @@ class postActions extends sfActions
   public function executeShow(sfWebRequest $request)
   {
     // Retrieve appropriate post from database
-    if (!$request->getParameter('id', null))
+    if (!$request->getParameter('slug', null))
     {
       $post = Doctrine::getTable('Post')->getLastPost();
     }
     else
     {
-      $post = Doctrine::getTable('Post')->getOnlinePost($request->getParameter('id'));
+      $post = Doctrine::getTable('Post')->getOnlinePost($request->getParameter('slug'));
     }
 
     // Throw a 404 error if no post is found

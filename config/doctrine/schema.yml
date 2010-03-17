@@ -1,4 +1,7 @@
 Post:
+  actAs:
+    Sluggable:
+      fields: [track_author, track_title]
   columns:
     id:
       type: integer

@@ -23,13 +23,13 @@ class PostTable extends Doctrine_Table
     return $post;
   }
 
-  public function getOnlinePost($post_id)
+  public function getOnlinePost($post_slug)
   {
     $q = Doctrine_Query::create()
       ->select(self::FIELDS_BASIC)
       ->from('Post p')
-      ->where('p.is_online = 1 and p.publish_on <= now() and p.id = ?');
-    $post = $q->fetchOne(array($post_id));
+      ->where('p.is_online = 1 and p.publish_on <= now() and p.slug = ?');
+    $post = $q->fetchOne(array($post_slug));
     $q->free();
 
     return $post;
