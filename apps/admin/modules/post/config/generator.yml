@@ -14,8 +14,12 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    ~
-      filter:  ~
-      form:    ~
+      list:
+        display: [track_title, track_author, publish_on, is_online]
+      filter:  ~ 
+      form: 
+        display: 
+          Track: [body, track_author, track_title, track_filename]
+          Publication: [publish_on, is_online]
       edit:    ~
       new:     ~

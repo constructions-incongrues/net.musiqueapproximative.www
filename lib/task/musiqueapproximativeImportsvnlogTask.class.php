@@ -103,15 +103,3 @@ EOF;
     } 
   }
 }
-
-/*
-// Rebuild log as needed
-foreach ($files as $file)
-{
-  // Get svn revision from file
-  // Grab corresponding logentry from log
-  // Create post object
-  // Copy file
-  // Feedback
-}
-*/
