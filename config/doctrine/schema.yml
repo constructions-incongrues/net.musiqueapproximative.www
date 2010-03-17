@@ -1,5 +1,6 @@
 Post:
   actAs:
+    Timestampable:
     Sluggable:
       fields: [track_author, track_title]
   columns:
@@ -14,6 +15,5 @@ Post:
     track_filename: string
     track_md5: string(32)
     svn_revision: integer
-    created_on: datetime
     publish_on: datetime
     is_online: bool

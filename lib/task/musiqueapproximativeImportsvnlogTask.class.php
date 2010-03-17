@@ -88,7 +88,7 @@ EOF;
       $track_parts = explode('-', basename($filename, '.mp3'));
       $post = new Post();
       $post->body = $revisions[$revision]['message'];
-      $post->created_on = $revisions[$revision]['date'];
+      $post->created_at = $revisions[$revision]['date'];
       $post->publish_on = $revisions[$revision]['date'];
       $post->track_filename = basename($filename);
       $post->track_author = $track_parts[0];
