@@ -24,7 +24,7 @@ class postActions extends sfActions
     }
     else
     {
-      $post = Doctrine::getTable('Post')->find($request->getParameter('id'));
+      $post = Doctrine::getTable('Post')->getOnlinePost($request->getParameter('id'));
     }
 
     // Throw a 404 error if no post is found
