@@ -97,8 +97,10 @@ EOF;
       $post->svn_revision = $revision;
       $post->is_online = true;
       $post->save();
-    } 
 
+      // Copy track to destination directory
+      copy($filename, sprintf('%s/%s', $arguments['target_dir'], basename($filename)));
+    } 
   }
 }
 
