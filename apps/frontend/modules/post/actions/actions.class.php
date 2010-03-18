@@ -38,22 +38,15 @@ class postActions extends sfActions
 
   public function executeList(sfWebRequest $request)
   {
-    $posts = Doctrine::getTable('Post')->getOnlinePosts();
-    $this->posts = $posts;
-  }
-
-  public function executeSearch(sfWebRequest $request)
-  {
-    $results = Doctrine::getTable('Post')->search($request->getParameter('q'));
-    $posts = array();
-    foreach ($results as $result)
+    if ($this->getRequestParameter('q'))
     {
-      $post = Doctrine::getTable('Post')->getOnlinePostById($result['id']);
-      if ($post)
-      {
-        $posts[] = $post;
-      }
+      $posts = Doctrine::getTable('Post')->search($request->getParameter('q'));
     }
+    else
+    {
+      $posts = Doctrine::getTable('Post')->getOnlinePosts();
+    }
+
     $this->posts = $posts;
   }
 }

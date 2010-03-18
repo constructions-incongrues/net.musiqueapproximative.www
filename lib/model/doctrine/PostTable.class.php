@@ -101,4 +101,20 @@ class PostTable extends Doctrine_Table
       
     return $q->execute();
   }
+
+  public function search($query)
+  {
+    $results = parent::search($query);
+    $posts = array();
+    foreach ($results as $result)
+    {
+      $post = $this->getOnlinePostById($result['id']);
+      if ($post)
+      {
+        $posts[] = $post;
+      }
+    }
+
+    return $posts;
+  }
 }

@@ -4,14 +4,14 @@
     <?php include_http_metas() ?>
     <?php include_metas() ?>
     <?php include_title() ?>
-    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/favicon.ico" />
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
   </head>
   <body>
     <p><?php echo link_to('Browse all tracks', '@post_list') ?></p>
     <p>
-      <form method="get" action="<?php echo url_for('@post_search') ?>">
+      <form method="get" action="<?php echo url_for('@post_list') ?>">
         <input type="text" name="q" value="<?php echo $sf_request->getParameter('q') ?>"/>
         <input type="submit" value="Search !" />
       </form>
