@@ -7,3 +7,7 @@ lib/model/doctrine/base/*
 lib/filter/doctrine/base/*
 data/sql/schema.sql
 web/sfDoctrinePlugin
+web/sfAdminDashPlugin
+lib/filter/doctrine/sfDoctrineGuardPlugin/base/*
+lib/form/doctrine/sfDoctrineGuardPlugin/base/*
+lib/model/doctrine/sfDoctrineGuardPlugin/base/*

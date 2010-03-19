@@ -11,5 +11,5 @@ post_show:
   param: { module: post, action: show }
 
 post_list:
-  url: /posts
-  param: { module: post, action: list }
+  url: /posts.:sf_format
+  param: { module: post, action: list, sf_format: html }
