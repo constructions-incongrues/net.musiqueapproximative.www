@@ -91,6 +91,7 @@ EOF;
       // Create object in database
       $track_parts = explode('-', basename($filename, '.mp3'));
       $post = new Post();
+      $post->id = $revision;
       $post->body = $revisions[$revision]['message'];
       $post->created_at = $revisions[$revision]['date'];
       $post->publish_on = $revisions[$revision]['date'];

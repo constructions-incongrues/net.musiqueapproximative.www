@@ -4,18 +4,49 @@
     <?php include_http_metas() ?>
     <?php include_metas() ?>
     <?php include_title() ?>
-    <link rel="shortcut icon" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/favicon.ico" />
+    <link rel="shortcut icon" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/images/favico.png" />
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
   </head>
   <body>
-    <p><?php echo link_to('Browse all tracks', '@post_list') ?></p>
-    <p>
+    <p id="browse">
+      <?php echo link_to('Browse all tracks', '@post_list', array('id' => 'index-toggle')) ?> <span id="loading" style="display: none;">(loading...)</span>
+      <!--
       <form method="get" action="<?php echo url_for('@post_list') ?>">
         <input type="text" name="q" value="<?php echo $sf_request->getParameter('q') ?>"/>
         <input type="submit" value="Search !" />
       </form>
+      -->
     </p>
+
+    <div id="index"></div>
+
     <?php echo $sf_content ?>
+
+    <div id="maintitle">Musique Approximative</div>
+
+    <div id="about">
+      <p>Ceci est un <em>micropodcast</em>. Vous y trouverez un flux de morceaux glanés au fil du web. </p>
+      <p>
+        <strong>Contributeurs : </strong>
+         <a href="http://bozoo.pastis-hosting.net">Bozoo</a> -
+         <a href="http://myspace.com/renardocrew">Chaton Pute</a> -
+         <a href="http://myspace.com/renardocrew">Super Promotion</a> -
+         <a href="http://myspace.com/deehowyou">Deehowyou</a> -
+         <a href="http://www.ouiedire.net">Valkiri</a> -
+         <a href="http://www.sidabitball.com">Jambonbill</a> - 
+         <a href="http://myspace.com/eatrabbit">Eat Rabbit</a> - 
+         <a href="http://www.glafouk.com">Glafouk</a> -
+         <a href="http://www.cochise.canalblog.com">Jacques Cochise</a> - 
+         <a href="http://www.myspace.com/plancton9">Plancton9</a> - 
+         <a href="http://www.myspace.com/schling">Schling</a> -
+         <a href="http://puyopuyo.lautre.net">Puyo Puyo</a> -
+         <a href="http://www.myspace.com/rachitikdata">Bibi Mati</a> -
+         <a href="http://www.mazemod.org">Otrox</a> - 
+         <a href="http://www.egotwister.com">Edmond Leprince</a>
+      </p>
+      <p>Ce projet est hébergé par <a href="http://www.pastis-hosting.net">Pastis Hosting</a>.</p>
+      <p>Contact : bertier at musiqueapproximative point net</p>
+    </div>
   </body>
 </html>

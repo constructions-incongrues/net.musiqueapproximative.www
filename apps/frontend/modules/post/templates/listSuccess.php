@@ -3,8 +3,13 @@
   <?php foreach ($posts as $post): ?>
 
     <li>
-      <?php echo link_to(sprintf('%s - %s', $post->track_author, $post->track_title), '@post_show?slug='.$post->slug) ?>
-      (<?php echo link_to($post->getSfGuardUser()->username, '@post_list?contributor='.$post->getSfGuardUser()->username) ?>)
+      <a href="<?php echo url_for('@post_show?slug='.$post->slug) ?>">
+        <span class="number">Itération <?php echo $post->id ?></span>
+        <span id="t-trax">
+          <?php echo $post->track_author ?> - <?php echo $post->track_title ?>
+          <span class="author">(<?php echo $post->getSfGuardUser()->username ?>)</span>
+        </span>
+      </a>
     </li>
 
   <?php endforeach; ?>
