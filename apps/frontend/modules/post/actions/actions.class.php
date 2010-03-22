@@ -52,7 +52,8 @@ class postActions extends sfActions
 
   public function executeFeed(sfWebRequest $request)
   {
-    $feed = sfFeedPeer::newInstance('atom1');
+    sfContext::getInstance()->getConfiguration()->loadHelpers('Markdown');
+    $feed = sfFeedPeer::newInstance('rss201');
     $feed->initialize(array(
       'title'         => 'Musique Approximative',
       'link'          => 'http://www.musiqueapproximative.net',
@@ -72,7 +73,7 @@ class postActions extends sfActions
         'authorName'  => $post->getSfGuardUser()->username,
         'pubDate'     => $publish_timestamp,
         'uniqueId'    => $post->slug,
-        'description' => $post->body
+        'description' => Markdown($post->body)
       ));
       $feed->addItem($item);
     }

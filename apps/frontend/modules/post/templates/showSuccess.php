@@ -1,3 +1,4 @@
+<?php use_helper('Markdown') ?>
 <div id="posts">
   <div style="display: block;">
     
@@ -10,7 +11,7 @@
       <?php endif; ?>
     </p>
     
-    <p><?php echo $post->body ?></p>
+    <p><?php echo Markdown($post->body) ?></p>
 
     <p id="author">par <?php echo link_to($post->getSfGuardUser()->username, '@post_list?contributor='.$post->getSfGuardUser()->username) ?></p>
 
