@@ -13,3 +13,7 @@ post_show:
 post_list:
   url: /posts.:sf_format
   param: { module: post, action: list, sf_format: html }
+
+post_feed:
+  url: /posts/feed
+  param: { module: post, action: feed }

@@ -49,4 +49,33 @@ class postActions extends sfActions
 
     $this->posts = $posts;
   }
+
+  public function executeFeed(sfWebRequest $request)
+  {
+    $feed = sfFeedPeer::newInstance('atom1');
+    $feed->initialize(array(
+      'title'         => 'Musique Approximative',
+      'link'          => 'http://www.musiqueapproximative.net',
+      'authorEmail'   => 'bertier@musiqueapproximative.net',
+    ));
+
+    $posts = Doctrine::getTable('Post')->getOnlinePosts($request->getParameter('contributor'), $request->getParameter('count', 50));
+    foreach ($posts as $post)
+    {
+      $strf = strptime($post->publish_on, '%Y-%m-%d %H:%M:%S');
+      $publish_timestamp = mktime($strf['tm_hour'], $strf['tm_min'], $strf['tm_sec'], $strf['tm_mon'] + 1, $strf['tm_mday'], $strf['tm_year'] + 1900);
+
+      $item = new sfFeedItem();
+      $item->initialize(array(
+        'title'       => sprintf('%s - %s', $post->track_author, $post->track_title),
+        'link'        => '@post_show?slug='.$post->slug,
+        'authorName'  => $post->getSfGuardUser()->username,
+        'pubDate'     => $publish_timestamp,
+        'uniqueId'    => $post->slug,
+        'description' => $post->body
+      ));
+      $feed->addItem($item);
+    }
+    $this->feed = $feed;
+  }
 }

@@ -92,7 +92,7 @@ class PostTable extends Doctrine_Table
     return $post;
   }
 
-  public function getOnlinePosts($contributor = null)
+  public function getOnlinePosts($contributor = null, $count = null)
   {
     $q = Doctrine_Query::create()
       ->select(self::FIELDS_BASIC)
@@ -104,6 +104,11 @@ class PostTable extends Doctrine_Table
     if ($contributor)
     {
       $q->andWhere('u.username = ?', (string)$contributor);
+    }
+
+    if ($count)
+    {
+      $q->limit($count);
     }
  
     return $q->execute();
