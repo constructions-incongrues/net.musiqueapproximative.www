@@ -7,7 +7,20 @@ all:
   # @see http://www.symfony-project.org/plugins/sfAdminDashPlugin
   sf_admin_dash:
     site:                         Musique Approximative - Administration
-    items:
+    categories:
       Posts:
-        url:    post
-
+        items:
+          New:
+            url:    post_new
+          List:
+            url:    post
+      Users:
+        credentials: [ManageUsers]
+        items:
+          Users:
+            url:  sf_guard_user 
+          Groups:
+            url:  sf_guard_group
+          Permissions:
+            url:  sf_guard_permission
+      

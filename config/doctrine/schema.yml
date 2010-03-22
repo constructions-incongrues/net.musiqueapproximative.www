@@ -19,3 +19,9 @@ Post:
     svn_revision: integer
     publish_on: datetime
     is_online: bool
+    contributor_id: 
+      type: integer(4)
+      notnull: true
+  relations:
+    sfGuardUser:
+      local: contributor_id

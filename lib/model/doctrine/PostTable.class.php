@@ -2,7 +2,7 @@
 
 class PostTable extends Doctrine_Table
 {
-  const FIELDS_BASIC = 'p.body, p.track_title, p.track_author, p.track_filename, p.slug';
+  const FIELDS_BASIC = 'p.body, p.track_title, p.track_author, p.track_filename, p.slug, u.username';
 
   /**
    * Returns last online post.
@@ -14,6 +14,7 @@ class PostTable extends Doctrine_Table
     $q = Doctrine_Query::create()
       ->select(self::FIELDS_BASIC)
       ->from('Post p')
+      ->leftJoin('p.sfGuardUser u on p.contributor_id = u.id')
       ->where('p.is_online = 1 and p.publish_on <= now()')
       ->orderBy('p.publish_on DESC')
       ->limit(1);
@@ -28,6 +29,7 @@ class PostTable extends Doctrine_Table
     $q = Doctrine_Query::create()
       ->select(self::FIELDS_BASIC)
       ->from('Post p')
+      ->leftJoin('p.sfGuardUser u on p.contributor_id = u.id')
       ->where('p.is_online = 1 and p.publish_on <= now() and p.slug = ?');
     $post = $q->fetchOne(array($post_slug));
     $q->free();
@@ -40,6 +42,7 @@ class PostTable extends Doctrine_Table
     $q = Doctrine_Query::create()
       ->select(self::FIELDS_BASIC)
       ->from('Post p')
+      ->leftJoin('p.sfGuardUser u on p.contributor_id = u.id')
       ->where('p.is_online = 1 and p.publish_on <= now() and p.id = ?');
     $post = $q->fetchOne(array($post_id));
     $q->free();
@@ -58,6 +61,7 @@ class PostTable extends Doctrine_Table
     $q = Doctrine_Query::create()
       ->select(self::FIELDS_BASIC)
       ->from('Post p')
+      ->leftJoin('p.sfGuardUser u on p.contributor_id = u.id')
       ->where('p.is_online = 1 and p.publish_on > ?')
       ->orderBy('p.publish_on ASC')
       ->limit(1);
@@ -78,6 +82,7 @@ class PostTable extends Doctrine_Table
     $q = Doctrine_Query::create()
       ->select(self::FIELDS_BASIC)
       ->from('Post p')
+      ->leftJoin('p.sfGuardUser u on p.contributor_id = u.id')
       ->where('p.is_online = 1 and p.publish_on < ?')
       ->orderBy('p.publish_on DESC')
       ->limit(1);
@@ -87,18 +92,20 @@ class PostTable extends Doctrine_Table
     return $post;
   }
 
-  public function getOnlinePosts($count = null)
+  public function getOnlinePosts($contributor = null)
   {
     $q = Doctrine_Query::create()
       ->select(self::FIELDS_BASIC)
       ->from('Post p')
+      ->leftJoin('p.sfGuardUser u on p.contributor_id = u.id')
       ->where('p.is_online = 1')
       ->orderBy('p.publish_on DESC');
-    if ($count)
+
+    if ($contributor)
     {
-      $q->limit($count);
+      $q->andWhere('u.username = ?', (string)$contributor);
     }
-      
+ 
     return $q->execute();
   }
 

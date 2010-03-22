@@ -44,7 +44,7 @@ class postActions extends sfActions
     }
     else
     {
-      $posts = Doctrine::getTable('Post')->getOnlinePosts();
+      $posts = Doctrine::getTable('Post')->getOnlinePosts($request->getParameter('contributor'));
     }
 
     $this->posts = $posts;

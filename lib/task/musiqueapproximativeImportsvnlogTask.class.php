@@ -57,7 +57,11 @@ EOF;
     $revisions = array();
     foreach ($xml->logentry as $entry)
     {
-      $revisions[(int)$entry['revision']] = array('message' => (string)$entry->msg, 'date' => (string)$entry->date);
+      $revisions[(int)$entry['revision']] = array(
+        'message' => (string)$entry->msg, 
+        'date'    => (string)$entry->date,
+        'author'  => (string)$entry->author ? (string)$entry->author : 'bertier'
+      );
     } 
 
     // Aggregate informations for all files in source directory
@@ -96,6 +100,12 @@ EOF;
       $post->track_md5 = md5($filename);
       $post->svn_revision = $revision;
       $post->is_online = true;
+      $contributor_id = Doctrine_Query::create()
+        ->select('u.id')
+        ->from('sfGuardUser u')
+        ->where('username = ?')
+        ->execute(array($revisions[$revision]['author']), Doctrine_Core::HYDRATE_SINGLE_SCALAR);
+      $post->contributor_id = $contributor_id;
       $post->save();
 
       // Copy track to destination directory

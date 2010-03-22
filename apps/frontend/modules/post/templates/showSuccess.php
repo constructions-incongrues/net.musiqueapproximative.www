@@ -2,6 +2,9 @@
 <p>
   <a href="<?php echo $sf_request->getRelativeUrlRoot() ?>/tracks/<?php echo $post->track_filename ?>"><?php echo $post->track_author ?> - <?php echo $post->track_title ?></a></p>
 </p>
+<p>
+  <?php echo link_to($post->getSfGuardUser()->username, '@post_list?contributor='.$post->getSfGuardUser()->username) ?>
+</p>
 
 <?php if ($post_previous): ?>
   <p><?php echo link_to('Previous', '@post_show?slug='.$post_previous->slug) ?></p>
