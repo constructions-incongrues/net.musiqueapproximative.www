@@ -30,6 +30,8 @@ class postActions extends sfActions
     // Throw a 404 error if no post is found
     $this->forward404Unless($post);
 
+    $this->getResponse()->setTitle(sprintf('%s - %s | Musique Approximative', $post->track_author, $post->track_title));
+
     // Pass data to view
     $this->post = $post;
     $this->post_next = Doctrine::getTable('Post')->getNextPost($post);
@@ -75,6 +77,13 @@ class postActions extends sfActions
         'uniqueId'    => $post->slug,
         'description' => Markdown($post->body)
       ));
+      $enclosure = new sfFeedEnclosure();
+      $enclosure->initialize(array(
+        'url'       => sprintf('http://www.musiqueapproximative.net/tracks/%s', $post->track_filename),
+        'length'    => strlen(file_get_contents(sfConfig::get('sf_web_dir').'/tracks/'.$post->track_filename)),
+        'mimeType'  => 'audio/mp3'
+      ));
+      $item->setEnclosure($enclosure);
       $feed->addItem($item);
     }
     $this->feed = $feed;
