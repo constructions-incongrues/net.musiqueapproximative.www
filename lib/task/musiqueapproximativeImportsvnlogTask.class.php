@@ -90,12 +90,13 @@ EOF;
       
       // Create object in database
       $track_parts = explode('-', basename($filename, '.mp3'));
+      $clean_filename = filter_var(basename($filename), FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
       $post = new Post();
       $post->id = $revision;
       $post->body = $revisions[$revision]['message'];
       $post->created_at = $revisions[$revision]['date'];
       $post->publish_on = $revisions[$revision]['date'];
-      $post->track_filename = basename($filename);
+      $post->track_filename = $clean_filename;
       $post->track_author = $track_parts[0];
       $post->track_title = $track_parts[1];
       $post->track_md5 = md5($filename);
@@ -110,7 +111,7 @@ EOF;
       $post->save();
 
       // Copy track to destination directory
-      copy($filename, sprintf('%s/%s', $arguments['target_dir'], basename($filename)));
+      copy($filename, sprintf('%s/%s', $arguments['target_dir'], $clean_filename));
     } 
   }
 }
