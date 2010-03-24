@@ -13,4 +13,9 @@ require_once dirname(__FILE__).'/../lib/postGeneratorHelper.class.php';
  */
 class postActions extends autoPostActions
 {
+  protected function processForm(sfWebRequest $request, sfForm $form)
+  {
+    $form->getObject()->contributor_id = $this->getUser()->getGuardUser()->id;
+    parent::processForm($request, $form);
+  }
 }

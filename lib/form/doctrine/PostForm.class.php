@@ -30,11 +30,12 @@ class PostForm extends BasePostForm
     $this->validatorSchema['is_online'] = new sfValidatorBoolean();
 
     $this->widgetSchema['publish_on'] = new sfWidgetFormDateTime(array(
-      'date' => array('can_be_empty'  =>  true, 'empty_values' => array('year' => date('Y'), 'month' => date('m'), 'day' => date('d'))),
-      'time' => array('can_be_empty'  =>  true, 'empty_values' => array('hour' => date('H'), 'minute' => date('i'), 'second' => date('s'))),
+      'date' => array('can_be_empty'  =>  false),
+      'time' => array('can_be_empty'  =>  false),
+      'default' => date('Y/m/d H:i')
     ));
     $this->validatorSchema['publish_on'] = new sfValidatorDateTime();
 
-    unset($this['created_at'], $this['updated_at'], $this['slug']);
+    unset($this['created_at'], $this['updated_at'], $this['slug'], $this['contributor_id']);
   }
 }

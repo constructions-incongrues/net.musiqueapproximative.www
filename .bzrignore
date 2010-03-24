@@ -11,3 +11,4 @@ web/sfAdminDashPlugin
 lib/filter/doctrine/sfDoctrineGuardPlugin/base/*
 lib/form/doctrine/sfDoctrineGuardPlugin/base/*
 lib/model/doctrine/sfDoctrineGuardPlugin/base/*
+web/sfJqueryReloadedPlugin

@@ -22,6 +22,5 @@ generator:
         display: 
           Track: [body, track_author, track_title, track_filename]
           Publication: [publish_on, is_online]
-          Tmp: [contributor_id]
       edit:    ~
       new:     ~
