@@ -17,7 +17,8 @@ generator:
       fields:  ~
       list:
         display: [track_title, track_author, publish_on, is_online]
-      filter:  ~ 
+      filter: 
+        class: false
       form: 
         display: 
           Track: [body, track_author, track_title, track_filename]
