@@ -18,4 +18,15 @@ class postActions extends autoPostActions
     $form->getObject()->contributor_id = $this->getUser()->getGuardUser()->id;
     parent::processForm($request, $form);
   }
+
+  protected function buildQuery()
+  {
+    $query = parent::buildQuery();
+    $query->orderBy('publish_on DESC');
+    if (!$this->getUser()->hasCredential('EditOthersPosts'))
+    {
+      $query->andWhere('contributor_id = ?', $this->getUser()->getGuardUser()->id);
+    }
+    return $query;
+  }
 }

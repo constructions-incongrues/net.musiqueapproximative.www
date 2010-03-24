@@ -2,7 +2,7 @@ sfGuardUser:
   bertier:
     username:       bertier
     password:       bertier
-    is_super_admin: true
+    is_super_admin: false 
   puyopuyo:
     username:       puyopuyo
   glafouk:

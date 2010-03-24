@@ -16,7 +16,7 @@ generator:
       actions: ~
       fields:  ~
       list:
-        display: [track_title, track_author, publish_on, is_online]
+        display: [=track_title, track_author, publish_on, is_online]
       filter: 
         class: false
       form: 
