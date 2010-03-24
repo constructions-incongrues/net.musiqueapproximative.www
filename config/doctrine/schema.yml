@@ -17,7 +17,9 @@ Post:
     track_filename: string
     track_md5: string(32)
     svn_revision: integer
-    publish_on: datetime
+    publish_on: 
+      type: datetime
+      notnull: true 
     is_online: bool
     contributor_id: 
       type: integer(4)
