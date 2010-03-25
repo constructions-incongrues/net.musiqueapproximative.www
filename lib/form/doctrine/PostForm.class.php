@@ -26,7 +26,7 @@ class PostForm extends BasePostForm
     $this->widgetSchema['track_title'] = new sfWidgetFormInputText();
     $this->widgetSchema['track_author'] = new sfWidgetFormInputText();
 
-    $this->widgetSchema['is_online'] = new sfWidgetFormInputCheckbox(array(), array('checked' => 'checked')); 
+    $this->widgetSchema['is_online'] = new sfWidgetFormInputCheckbox(array(), array('checked' => '')); 
     $this->validatorSchema['is_online'] = new sfValidatorBoolean();
 
     $this->widgetSchema['publish_on'] = new sfWidgetFormDateTime(array(

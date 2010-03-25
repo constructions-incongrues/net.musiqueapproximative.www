@@ -14,14 +14,28 @@ generator:
 
     config:
       actions: ~
-      fields:  ~
+      fields:
+        body:
+          label: "Message"
+          help: |
+            Un petit message présentant le morceau posté.
+            Il peut être mis en forme avec la syntax Markdown : http://daringfireball.net/projects/markdown/syntax
+        track_title: { label: "Titre du morceau" }
+        track_author: { label: "Auteur du morceau" }
+        track_filename: { label: "Le morceau !", help: "Au format MP3. Le nom du fichier peut contenir n importe quels caractères ;)" }
+        publish_on:
+          label: "Date de publication"
+          help: "Date et heure à laquelle le morceau sera publié."
+        is_online:
+          label: "Activer ?"
+          help: "Si la case n est pas cochée, le morceau n est pas affiché sur le site."
       list:
         display: [=track_title, track_author, publish_on, is_online]
       filter: 
         class: false
       form: 
         display: 
-          Track: [body, track_author, track_title, track_filename]
+          Track: [body, _body_preview, track_author, track_title, track_filename]
           Publication: [publish_on, is_online]
       edit:    ~
       new:     ~

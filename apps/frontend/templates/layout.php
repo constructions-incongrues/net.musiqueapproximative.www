@@ -12,12 +12,10 @@
   <body>
     <p id="browse">
       <?php echo link_to('Browse all tracks', '@post_list', array('id' => 'index-toggle')) ?> <span id="loading" style="display: none;">(loading...)</span>
-      <!--
       <form method="get" action="<?php echo url_for('@post_list') ?>">
         <input type="text" name="q" value="<?php echo $sf_request->getParameter('q') ?>"/>
         <input type="submit" value="Search !" />
       </form>
-      -->
     </p>
 
     <div id="index"></div>
