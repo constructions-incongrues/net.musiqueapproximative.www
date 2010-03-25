@@ -18,9 +18,9 @@ background-color: #000;
 
 #posts p
 {
-	text-align: center;
-	margin-left:2em;
-	margin-right:2em;
+  text-align: center;
+  margin-left:2em;
+  margin-right:2em;
 }
 
 #posts a, #posts a:active, #posts a:visited
@@ -48,6 +48,11 @@ color:#FFF;}
 #t-trax a:hover
 {
   color: #fff;
+}
+
+#loading {
+  color: white;
+  font-size: 0.8em;
 }
 
 a .index-toggle
@@ -115,12 +120,6 @@ margin-bottom: 0.5em;
   min-height:5em;
 }
 
-
-#loading {
-  color: white;
-  font-size: 0.8em;
-}
-
 .last-update {font-size:0.8em;color:#000;margin-top:20px;}
 a, a:active, a:visited {color:#777;text-decoration:none;}
 a:hover {color:#000000;border-bottom:0px!important;}
@@ -140,9 +139,41 @@ img
 .number {font-weight:bold;text-transform:uppercase;font-size:0.8em;  font-family: sans-serif;color:#FFF;margin-right:10px;}
 .t-trax {color:#aaa;}
 span.arrow {display:none; font-weight:bold;}
-#browse {font-size:0.9em;font-weight:bold;text-transform:uppercase;margin-top:10px}
-#browse a, #browse a:active, #browse a:visited {color:#FFF; background-color:#000;}
-#browse a:hover {color:#ddd;}
+
+#browse-all a, #browse-all a:active, #browse-all a:visited {color:#FFF; background-color:#000;}
+#browse-all a:hover {color:#ddd;}
+
 .author {visibility:hidden;}
+
 #t-trax:hover .author {visibility:visible; color:#aaa}
 
+#navbar {
+background-color:#000;
+font-size:1em;
+padding:0px;
+margin:0px;
+}
+
+#browse-all  {text-align:left;font-size:0.9em;font-weight:bold;text-transform:uppercase;margin-top:0px;padding-bottom:5px;}
+#browse-all p {padding:0px; margin:0px;}
+#browse {text-align:right;font-size:0.9em;font-weight:bold;text-transform:uppercase;margin-top:-25px;padding-bottom:5px;}
+
+#browse input.search
+{
+background-color:#FFF;
+border:solid 3px #000;
+}
+
+#browse input.submit
+{
+color: #000!important;
+background-color:#FFF;
+border:solid 3px #000;
+}
+
+#browse input.submit:hover 
+{
+color: #FFF!important;
+background-color:#000;
+border:solid 3px #000;
+}
