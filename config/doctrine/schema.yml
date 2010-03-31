@@ -3,6 +3,7 @@ Post:
     Timestampable:
     Sluggable:
       fields: [track_author, track_title]
+      canUpdate: true
     Searchable:
       fields: [track_author, track_title]
   columns:
@@ -20,7 +21,7 @@ Post:
     publish_on: 
       type: datetime
       notnull: true 
-    is_online: bool
+    is_online: boolean
     contributor_id: 
       type: integer(4)
       notnull: true

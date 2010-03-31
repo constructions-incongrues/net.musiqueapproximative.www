@@ -66,14 +66,22 @@ EOF;
 
     // Aggregate informations for all files in source directory
     $iterator = new RecursiveDirectoryIterator($arguments['source_dir']);
+    $seen_revisions =  array();
     foreach ($iterator as $file => $info)
     {
       $filename = (array)$file;
       $filename = $filename[0];
+      if (Doctrine::getTable('Post')->findByTrackMd5(md5($filename), Doctrine_Core::HYDRATE_ARRAY))
+      {
+        $this->logSection('notice', sprintf('Track "%s" was previously imported', basename($filename)));
+        continue;
+      }
+
       if (is_dir($filename))
       {
         continue;
       }
+
       $cmd = sprintf('/usr/bin/svn info --xml %s;', escapeshellarg($filename));
       $res = shell_exec($cmd);
       $this->logSection('info', sprintf('Importing "%s"', $filename));
@@ -83,6 +91,24 @@ EOF;
         $this->logSection('info', sprintf('Could not get versionning information from "%s"', $filename));
       }
       $revision = (string)$xml->entry->commit['revision']; 
+      if ($revision == 520)
+      {
+        var_dump(basename($filename));
+      }
+      // Exceptions
+      if (basename($filename) == "evariste - connais tu l'animal qui inventa le calcul intégral.mp3")
+      {
+        $revision = 152;
+      }
+      if (basename($filename) == "Fantome Fesse - gimme ghost.mp3")
+      {
+        $revision = 156;
+      }
+      if (isset($seen_revisions[$revision]))
+      {
+        throw new RuntimeException(sprintf('Conflicting files "%s" and "%s" for revision "%s"', basename($filename), $seen_revisions[$revision], $revision));
+      }
+      $seen_revisions[$revision] = basename($filename);
       if (!$revision)
       {
         continue;

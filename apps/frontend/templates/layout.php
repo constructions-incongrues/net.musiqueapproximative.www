@@ -18,8 +18,8 @@
 
     <div id="browse"> 
       <form method="get" action="<?php echo url_for('@post_list') ?>">
-        <input type="text" name="q" value="<?php echo $sf_request->getParameter('q') ?>"/>
-        <input type="submit" value="Search !" />
+        <input type="text" class="search" name="q" value="<?php echo $sf_request->getParameter('q') ?>"/>
+        <input type="submit" class="submit" value="Search !" />
       </form>
     </div>
 
