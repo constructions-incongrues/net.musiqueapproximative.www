@@ -7,7 +7,10 @@
     <link rel="shortcut icon" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/images/favico.png" />
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
+    <!--
     <link type="application/rss+xml" title="Musique Approximative" rel="alternate" href="<?php echo url_for('@post_feed') ?>"/>
+    -->
+    <link type="application/rss+xml" title="Musique Approximative" rel="alternate" href="http://feeds.feedburner.com/musique-approximative"/>
   </head>
   <body>
     <div id="browse-all">

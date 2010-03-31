@@ -79,7 +79,7 @@ class postActions extends sfActions
       ));
       $enclosure = new sfFeedEnclosure();
       $enclosure->initialize(array(
-        'url'       => sprintf('http://www.musiqueapproximative.net/tracks/%s', $post->track_filename),
+        'url'       => htmlspecialchars(sprintf('http://www.musiqueapproximative.net/tracks/%s', $post->track_filename)),
         'length'    => strlen(file_get_contents(sfConfig::get('sf_web_dir').'/tracks/'.$post->track_filename)),
         'mimeType'  => 'audio/mp3'
       ));
