@@ -30,7 +30,7 @@ class PostTable extends Doctrine_Table
       ->select(self::FIELDS_BASIC)
       ->from('Post p')
       ->leftJoin('p.sfGuardUser u on p.contributor_id = u.id')
-      ->where('p.is_online = 1 and p.publish_on <= now() and p.slug = ?');
+      ->where('p.is_online = 1 and p.publish_on <= date_add(now(), interval 2 hour) and p.slug = ?');
     $post = $q->fetchOne(array($post_slug));
     $q->free();
 
@@ -43,7 +43,7 @@ class PostTable extends Doctrine_Table
       ->select(self::FIELDS_BASIC)
       ->from('Post p')
       ->leftJoin('p.sfGuardUser u on p.contributor_id = u.id')
-      ->where('p.is_online = 1 and p.publish_on <= now() and p.id = ?');
+      ->where('p.is_online = 1 and p.publish_on <= date_add(now(), interval 2 hour) and p.id = ?');
     $post = $q->fetchOne(array($post_id));
     $q->free();
 
