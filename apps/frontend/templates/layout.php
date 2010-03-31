@@ -47,7 +47,8 @@
          <a href="http://puyopuyo.lautre.net">Puyo Puyo</a> -
          <a href="http://www.myspace.com/rachitikdata">Bibi Mati</a> -
          <a href="http://www.mazemod.org">Otrox</a> - 
-         <a href="http://www.egotwister.com">Edmond Leprince</a>
+         <a href="http://www.egotwister.com">Edmond Leprince</a> -
+         <a hreg="http://www.myspace.com/dokidokiparis">Sascii</a>
       </p>
       <p>Ce projet est hébergé par <a href="http://www.pastis-hosting.net">Pastis Hosting</a>.</p>
       <p>Contact : bertier at musiqueapproximative point net</p>
