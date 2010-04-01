@@ -34,11 +34,10 @@
    
     <center>
       <span id="mp3">
-        <a href="<?php echo $sf_request->getRelativeUrlRoot() ?>/tracks/<?php echo $post->track_filename ?>">DOWNLOAD</a>
         <a class="media" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/tracks/<?php echo $post->track_filename ?>"><?php echo $post->track_author ?> - <?php echo $post->track_title ?></a>
       </span>
       <p />
-      <a href="<?php echo $sf_request->getRelativeUrlRoot() ?>/tracks/<?php echo $post->track_filename ?>"><?php echo $post->track_author ?> - <?php echo $post->track_title ?></a>
+      <a title="Télécharger le morceau" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/tracks/<?php echo $post->track_filename ?>"><?php echo $post->track_author ?> - <?php echo $post->track_title ?></a>
     </center>
     <p />
 
