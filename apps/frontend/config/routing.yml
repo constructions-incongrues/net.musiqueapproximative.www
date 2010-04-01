@@ -4,7 +4,7 @@
 # default rules
 homepage:
   url:   /
-  param: { module: post, action: show }
+  param: { module: post, action: home }
 
 post_show:
   url:  /post/:slug

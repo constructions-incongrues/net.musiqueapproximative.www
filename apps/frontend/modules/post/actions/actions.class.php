@@ -38,6 +38,12 @@ class postActions extends sfActions
     $this->post_previous = Doctrine::getTable('Post')->getPreviousPost($post);
   }
 
+  public function executeHome(sfWebRequest $request)
+  {
+    $this->forward404Unless($post = Doctrine::getTable('Post')->getLastPost());
+    $this->redirect('@post_show?slug='.$post->slug);
+  }
+
   public function executeList(sfWebRequest $request)
   {
     if ($this->getRequestParameter('q'))
