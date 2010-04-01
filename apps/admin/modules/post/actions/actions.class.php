@@ -25,11 +25,19 @@ class postActions extends autoPostActions
   protected function buildQuery()
   {
     $query = parent::buildQuery();
-    $query->orderBy('publish_on DESC');
+
+    // Sort by descending publication date by default
+    if (!$this->getRequest()->getParameter('sort'))
+    {
+      $query->orderBy('publish_on DESC');
+    }
+
+    // Restrict posts list for non-admin users
     if (!$this->getUser()->hasCredential('EditOthersPosts'))
     {
       $query->andWhere('contributor_id = ?', $this->getUser()->getGuardUser()->id);
     }
+
     return $query;
   }
 }
