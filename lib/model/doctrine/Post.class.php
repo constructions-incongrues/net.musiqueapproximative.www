@@ -12,4 +12,8 @@
  */
 class Post extends BasePost
 {
+  public function getContributorDisplayName()
+  {
+    return $this->getSfGuardUser()->getDisplayName();
+  }
 }

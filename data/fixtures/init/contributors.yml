@@ -3,6 +3,10 @@ sfGuardUser:
     username:       bertier
     password:       bertier
     is_super_admin: false 
+    UserProfile:
+      display_name: Michel Bertier
+      email:        mbertier@parishq.net
+      website_url:  "http://bertier.pastis-hosting.net"
   puyopuyo:
     username:       puyopuyo
   glafouk:

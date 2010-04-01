@@ -12,4 +12,12 @@
  */
 class sfGuardUser extends PluginsfGuardUser
 {
+  public function getDisplayName()
+  {
+    if (!$name = $this->UserProfile->display_name)
+    {
+      $name = $this->username;
+    }
+    return $name;
+  }
 }

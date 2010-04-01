@@ -10,4 +10,5 @@ Post:
     created_at: <?php echo date('Y-m-d H:i:s', time() + rand(0, 500000))."'\n"; ?>
     publish_on: <?php echo date('Y-m-d H:i:s', time() + rand(0, 500000))."'\n"; ?>
     is_online: <?php echo rand(0, 1)."\n" ?>
+    contributor_id: <?php echo rand(1, 2)."\n" ?>
 <?php endfor; ?>

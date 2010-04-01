@@ -7,7 +7,7 @@
         <span class="number">Itération <?php echo $post->id ?></span>
         <span id="t-trax">
           <?php echo $post->track_author ?> - <?php echo $post->track_title ?>
-          <span class="author">(<?php echo $post->getSfGuardUser()->username ?>)</span>
+          <span class="author">(<?php echo $post->getContributorDisplayName() ?>)</span>
         </span>
       </a>
     </li>

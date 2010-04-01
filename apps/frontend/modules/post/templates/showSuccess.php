@@ -13,7 +13,7 @@
     
     <p><?php echo Markdown($post->body) ?></p>
 
-    <p id="author">par <?php echo link_to($post->getSfGuardUser()->username, '@post_list?contributor='.$post->getSfGuardUser()->username) ?></p>
+    <p id="author">par <?php echo link_to($post->getContributorDisplayName(), '@post_list?contributor='.$post->getSfGuardUser()->username) ?></p>
 
     <p />
    

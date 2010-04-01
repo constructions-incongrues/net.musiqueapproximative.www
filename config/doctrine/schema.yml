@@ -28,3 +28,24 @@ Post:
   relations:
     sfGuardUser:
       local: contributor_id
+
+UserProfile:
+  columns:
+    user_id:          { type: integer(4), notnull: true }
+    display_name:     { type: string(255) }
+    email:            { type: string(255) }
+    website_url:      { type: string(255) }
+  indexes:
+    email_index:
+      fields: [email]
+      unique: true
+  relations:
+    sfGuardUser:
+      type: one
+      foreignType: one
+      class: sfGuardUser
+      local: user_id
+      foreign: id
+      onDelete: cascade
+      foreignAlias: UserProfile
+

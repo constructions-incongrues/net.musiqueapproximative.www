@@ -36,24 +36,16 @@
       <p>Ceci est un <em>micropodcast</em>. Vous y trouverez un flux de morceaux glanés au fil du web. </p>
       <p>
         <strong>Contributeurs : </strong>
-         <a href="http://bozoo.pastis-hosting.net">Bozoo</a> -
-         <a href="http://myspace.com/renardocrew">Chaton Pute</a> -
-         <a href="http://myspace.com/renardocrew">Super Promotion</a> -
-         <a href="http://myspace.com/deehowyou">Deehowyou</a> -
-         <a href="http://www.ouiedire.net">Valkiri</a> -
-         <a href="http://www.sidabitball.com">Jambonbill</a> - 
-         <a href="http://myspace.com/eatrabbit">Eat Rabbit</a> - 
-         <a href="http://www.glafouk.com">Glafouk</a> -
-         <a href="http://www.cochise.canalblog.com">Jacques Cochise</a> - 
-         <a href="http://www.myspace.com/plancton9">Plancton9</a> - 
-         <a href="http://www.myspace.com/schling">Schling</a> -
-         <a href="http://puyopuyo.lautre.net">Puyo Puyo</a> -
-         <a href="http://www.myspace.com/rachitikdata">Bibi Mati</a> -
-         <a href="http://www.mazemod.org">Otrox</a> - 
-         <a href="http://www.egotwister.com">Edmond Leprince</a> -
-         <a href="http://www.myspace.com/dokidokiparis">Sascii</a>
+        <?php include_component('post', 'contributors') ?>
       </p>
-      <p>Ce projet est hébergé par <a href="http://www.pastis-hosting.net">Pastis Hosting</a>.</p>
+      <p>
+        Ce projet a été développé par <a href="https://launchpad.net/~constructions-incongrues">Constructions Incongrues</a> 
+        et est hébergé par <a href="http://www.pastis-hosting.net">Pastis Hosting</a>.
+      </p>
+      <p>
+        Le code source du projet est <a href="https://launchpad.net/musique-approximative">distribué</a> sous licence 
+        <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU AGPLv3</a>.
+      </p>
       <p>Contact : bertier at musiqueapproximative point net</p>
     </div>
     <script type="text/javascript">
