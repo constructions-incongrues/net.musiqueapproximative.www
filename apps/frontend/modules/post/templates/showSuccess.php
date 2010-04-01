@@ -1,4 +1,19 @@
 <?php use_helper('Markdown') ?>
+<div id="browse-all">
+  <p>
+    <?php echo link_to(sprintf('Browse all tracks (%d)', $posts_count), '@post_list', array('id' => 'index-toggle')) ?> <span id="loading" style="display: none;">(loading...)</span>
+  </p>
+</div>
+
+<div id="browse"> 
+  <form method="get" action="<?php echo url_for('@post_list') ?>">
+    <input type="text" class="search" name="q" value="<?php echo $sf_request->getParameter('q') ?>"/>
+    <input type="submit" class="submit" value="Search !" />
+  </form>
+</div>
+
+<div id="index"></div>
+
 <div id="posts">
   <div style="display: block;">
     

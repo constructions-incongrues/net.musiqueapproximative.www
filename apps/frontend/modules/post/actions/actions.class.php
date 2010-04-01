@@ -18,22 +18,20 @@ class postActions extends sfActions
   public function executeShow(sfWebRequest $request)
   {
     // Retrieve appropriate post from database
-    if (!$request->getParameter('slug', null))
-    {
-      $post = Doctrine::getTable('Post')->getLastPost();
-    }
-    else
-    {
-      $post = Doctrine::getTable('Post')->getOnlinePostBySlug($request->getParameter('slug'));
-    }
+    $post = Doctrine::getTable('Post')->getOnlinePostBySlug($request->getParameter('slug'));
 
     // Throw a 404 error if no post is found
     $this->forward404Unless($post);
 
+    // Set specific page title
     $this->getResponse()->setTitle(sprintf('%s - %s | Musique Approximative', $post->track_author, $post->track_title));
+
+    // Get number of online posts
+    $posts_count = Doctrine::getTable('Post')->countOnlinePosts();
 
     // Pass data to view
     $this->post = $post;
+    $this->posts_count = $posts_count;
     $this->post_next = Doctrine::getTable('Post')->getNextPost($post);
     $this->post_previous = Doctrine::getTable('Post')->getPreviousPost($post);
   }

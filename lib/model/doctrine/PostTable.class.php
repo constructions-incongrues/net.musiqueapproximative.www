@@ -92,7 +92,7 @@ class PostTable extends Doctrine_Table
     return $post;
   }
 
-  public function getOnlinePosts($contributor = null, $count = null)
+  protected function buildOnlinePostsQuery($contributor = null, $count = null)
   {
     $q = Doctrine_Query::create()
       ->select(self::FIELDS_BASIC)
@@ -110,8 +110,18 @@ class PostTable extends Doctrine_Table
     {
       $q->limit($count);
     }
- 
-    return $q->execute();
+
+    return $q;
+  }
+
+  public function getOnlinePosts($contributor = null, $count = null)
+  {
+    return $this->buildOnlinePostsQuery($contributor, $count)->execute();
+  }
+
+  public function countOnlinePosts($contributor = null, $count = null)
+  {
+    return $this->buildOnlinePostsQuery($contributor, $count)->count();
   }
 
   public function search($query)

@@ -13,20 +13,6 @@
     <link type="application/rss+xml" title="Musique Approximative" rel="alternate" href="http://feeds.feedburner.com/musique-approximative"/>
   </head>
   <body>
-    <div id="browse-all">
-      <p>
-        <?php echo link_to('Browse all tracks', '@post_list', array('id' => 'index-toggle')) ?> <span id="loading" style="display: none;">(loading...)</span>
-      </p>
-    </div>
-
-    <div id="browse"> 
-      <form method="get" action="<?php echo url_for('@post_list') ?>">
-        <input type="text" class="search" name="q" value="<?php echo $sf_request->getParameter('q') ?>"/>
-        <input type="submit" class="submit" value="Search !" />
-      </form>
-    </div>
-
-    <div id="index"></div>
 
     <?php echo $sf_content ?>
 
