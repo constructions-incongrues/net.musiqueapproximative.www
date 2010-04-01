@@ -44,16 +44,24 @@ class postActions extends sfActions
 
   public function executeList(sfWebRequest $request)
   {
+    $list_title = null;
     if ($this->getRequestParameter('q'))
     {
       $posts = Doctrine::getTable('Post')->search($request->getParameter('q'));
+      $list_title = sprintf('%d résultat(s) pour la recherche "%s"', count($posts), $request->getParameter('q'));
     }
     else
     {
       $posts = Doctrine::getTable('Post')->getOnlinePosts($request->getParameter('contributor'));
+      if ($request->getParameter('contributor'))
+      {
+        $list_title = sprintf('%s a posté %d morceau(x) à ce jour', $request->getParameter('contributor'), count($posts));
+      }
     }
 
+    // Pass data to view
     $this->posts = $posts;
+    $this->list_title = $list_title;
   }
 
   public function executeFeed(sfWebRequest $request)

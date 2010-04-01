@@ -5,6 +5,10 @@ font-family: sans-serif;
 background-color: #000;
 }
 
+h4 {
+  color: #fff;
+}
+
 /* comment text */
 
 #posts

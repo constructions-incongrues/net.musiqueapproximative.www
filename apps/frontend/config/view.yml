@@ -18,6 +18,3 @@ default:
 
   has_layout:     true
   layout:         layout
-
-list:
-  has_layout:     false

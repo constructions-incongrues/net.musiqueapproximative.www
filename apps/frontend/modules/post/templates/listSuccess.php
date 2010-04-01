@@ -1,4 +1,7 @@
-<p><?php echo count($posts) ?> tracks !</p>
+<?php if ($list_title): ?>
+<h4><?php echo $list_title ?> (<?php echo link_to('retour', '@homepage') ?>)</h4>
+<?php endif; ?>
+
 <ul>
   <?php foreach ($posts as $post): ?>
 
