@@ -133,19 +133,15 @@ class Adduserprofile extends Doctrine_Migration_Base
         17 => array(
           'display_name' => 'Sascii',
           'email'        => 'sylvie@dokidoki.fr',
-          'website_url'  => 'http://www.myspace.com/dokidokiparis')
+          'website_url'  => 'http://www.myspace.com/dokidokiparis'),
         18 => array(
           'display_name' => 'Santaklausnihil',
           'email'        => '',
-          'website_url'  => 'http://www.musikmekanikcirkus.org')
+          'website_url'  => 'http://www.musikmekanikcirkus.org'),
         19 => array(
           'display_name' => 'Gumbi',
           'email'        => 'gumbi_1@hotmail.fr',
           'website_url'  => 'http://www.flickr.com/photos/fredericbailleul/')
-        20 => array(
-          'display_name' => 'Sinead',
-          'email'        => '',
-          'website_url'  => '')
       );
 
       foreach ($profiles as $id => $profile)
