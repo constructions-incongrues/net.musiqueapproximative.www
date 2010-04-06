@@ -98,7 +98,7 @@ class PostTable extends Doctrine_Table
       ->select(self::FIELDS_BASIC)
       ->from('Post p')
       ->leftJoin('p.sfGuardUser u on p.contributor_id = u.id')
-      ->where('p.is_online = 1')
+      ->where('p.is_online = 1 and p.publish_on <= date_add(now(), interval 2 hour)')
       ->orderBy('p.publish_on DESC');
 
     if ($contributor)
