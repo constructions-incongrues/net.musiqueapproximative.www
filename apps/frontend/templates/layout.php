@@ -32,6 +32,12 @@
         Le code source du projet est <a href="https://launchpad.net/musique-approximative">distribué</a> sous licence 
         <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU AGPLv3</a>.
       </p>
+      <p>
+        Consommer la musique autrement :
+        <a href="http://feeds.feedburner.com/musique-approximative">Podcast</a> / 
+        <a href="http://www.facebook.com/pages/Musique-Approximative/179136112996">Facebook</a> / 
+        <a href="http://twitter.com/approximazik">Twitter</a>
+      </p>
       <p>Contact : bertier at musiqueapproximative point net</p>
     </div>
     <script type="text/javascript">
