@@ -139,4 +139,17 @@ class PostTable extends Doctrine_Table
 
     return $posts;
   }
+
+  public function getRandomPost()
+  {
+    $q = Doctrine_Query::create()
+      ->select(self::FIELDS_BASIC)
+      ->from('Post p')
+      ->where('p.is_online = 1 and p.publish_on <= date_add(now(), interval 2 hour)')
+      ->orderBy('rand()')
+      ->limit(1);
+    $post = $q->fetchOne();
+
+    return $post;
+  }
 }

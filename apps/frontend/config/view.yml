@@ -14,7 +14,7 @@ default:
 
   stylesheets:    [frontend/main.css]
 
-  javascripts:    ["http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", jquery.media.js, behaviors.js]
+  javascripts:    ["http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "soundmanagerv295b-20100323/script/soundmanager2.js", 'sound.js']
 
   has_layout:     true
   layout:         layout

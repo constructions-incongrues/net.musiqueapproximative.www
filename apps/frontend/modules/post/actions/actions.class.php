@@ -100,4 +100,21 @@ class postActions extends sfActions
     }
     $this->feed = $feed;
   }
+
+  // TODO : rename to postData
+  public function executeUrl(sfWebRequest $request)
+  {
+    $post = Doctrine::getTable('Post')->getRandomPost();
+    $post_data = array(
+      'url' => $this->getContext()->getRouting()->generate('post_show', array('slug' => $post->getSlug()))
+    );
+
+    // Pass data to view
+    $this->post_data = $post_data['url'];
+
+    // Select and configure template
+    $this->setLayout(false);
+    sfConfig::set('sf_web_debug', false);
+    return sfView::SUCCESS;
+  }
 }

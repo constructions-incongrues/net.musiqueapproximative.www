@@ -11,8 +11,15 @@
     <link type="application/rss+xml" title="Musique Approximative" rel="alternate" href="<?php echo url_for('@post_feed') ?>"/>
     -->
     <link type="application/rss+xml" title="Musique Approximative" rel="alternate" href="http://feeds.feedburner.com/musique-approximative"/>
+
+    <script type="text/javascript">
+window.url_root = '<?php echo $sf_request->getRelativeUrlRoot() ?>';
+soundManager.url = '<?php echo $sf_request->getRelativeUrlRoot() ?>/js/soundmanagerv295b-20100323/swf/soundmanager2.swf';
+    </script>
+
   </head>
   <body>
+    <div id="player"></div>
 
     <?php echo $sf_content ?>
 
