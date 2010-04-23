@@ -83,15 +83,6 @@ class postActions extends sfActions
       // Canonical URL to post's associated file
       $track_file_url = htmlspecialchars(sprintf('http://www.musiqueapproximative.net/tracks/%s', $post->track_filename));
 
-      // Build post description
-      $routing = $this->getContext()->getRouting();
-      $description = sprintf(
-        '%s<ul><li><a href="%s">Écouter</a></li><li><a href="%s">Télécharger</a></li></ul>',
-        Markdown($post->body),
-        $routing->generate('post_show', array('slug' => $post->slug)),
-        $track_file_url
-      );
-
       // Make sure no errors are generated when files do not exist (useful in dev mode)
       if (!is_readable(sfConfig::get('sf_web_dir').'/tracks/'.$post->track_filename))
       {
@@ -109,7 +100,7 @@ class postActions extends sfActions
         'authorName'  => $post->getSfGuardUser()->username,
         'pubDate'     => $publish_timestamp,
         'uniqueId'    => $post->slug,
-        'description' => $description
+        'description' => Markdown($post->body)
       ));
       $enclosure = new sfFeedEnclosure();
       $enclosure->initialize(array(
