@@ -12,13 +12,33 @@ $(document).ready(function() {
 
     // Player
     soundManager.onload = function() {
-      $('a.media').click(function(event) {
-        var sound = soundManager.createSound( {
-          id : 'track',
-          url : $(this).attr('href')
-        });
-        sound.play();
-        event.preventDefault();
+      $('a#play').click(
+          function(event) {
+            event.preventDefault();
+            window.sound = soundManager.createSound( {
+              id : 'track',
+              url : $(this).attr('href'),
+              whileloading : function() {
+                $('div.loading').css('width',
+                    (((this.bytesLoaded / this.bytesTotal) * 100) + '%'));
+              },
+              whileplaying : function() {
+                $('div.position').css('width',
+                    (((this.position / this.durationEstimate) * 100) + '%'));
+              },
+              onfinish : function() {
+                alert('Done !');
+              }
+            });
+            window.sound.play();
+          });
+
+      $('a#pause').click(function() {
+        window.sound.pause();
+      });
+
+      $('a#stop').click(function() {
+        window.sound.stop();
       });
     };
   });

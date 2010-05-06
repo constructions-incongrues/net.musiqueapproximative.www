@@ -37,6 +37,32 @@ soundManager.url = '<?php echo $sf_request->getRelativeUrlRoot() ?>/swf/';
 
     <p />
    
+   <ul class="playlist">
+     <li>
+       <a class="sm2_link" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/tracks/<?php echo $post->track_filename ?>"><?php echo $post->track_author ?> - <?php echo $post->track_title ?></a>
+       <div>
+         <div class="controls">
+           <div class="statusbar">
+             <div class="loading"></div>
+             <div class="position"></div>
+           </div>
+           <div class="timing">
+             <div id="sm2_timing">
+               <span class="sm2_position"></span>
+               <span class="sm2_total"></span>
+             </div>
+           </div>
+         </div>
+       </div>
+     </li>
+   </ul>
+   
+   <p>
+   	 <a id="play" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/tracks/<?php echo $post->track_filename ?>">Play</a> |
+   	 <a id="pause" href="#">Pause</a> |
+   	 <a id="stop" href="#">Stop</a>
+   </p>
+   
     <center>
       <span id="mp3">
         <a class="media" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/tracks/<?php echo $post->track_filename ?>"><?php echo $post->track_author ?> - <?php echo $post->track_title ?></a>
