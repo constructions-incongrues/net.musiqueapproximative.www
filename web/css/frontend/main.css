@@ -181,3 +181,22 @@ color: #FFF!important;
 background-color:#000;
 border:solid 3px #000;
 }
+
+div.controls
+{
+border: solid 1px black;
+background-color: #eee;
+}
+
+div.loading
+{
+height: 0.5em;
+background-color: red;
+width: 100%;
+}
+div.position
+{
+height: 0.5em;
+background-color: green;
+width: 0%;
+}

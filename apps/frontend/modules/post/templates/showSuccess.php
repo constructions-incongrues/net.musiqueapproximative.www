@@ -3,7 +3,7 @@
 <script type="text/javascript">
 soundManager.url = '<?php echo $sf_request->getRelativeUrlRoot() ?>/swf/';
 window.relative_url_root = '<?php echo $sf_request->getRelativeUrlRoot() ?>';
-window.autoplay = <?php echo $sf_request->getParameter('play') ?>;
+window.autoplay = <?php echo $sf_request->getParameter('play', 0) ?>;
 </script>
 
 <div id="browse-all">
@@ -40,8 +40,8 @@ window.autoplay = <?php echo $sf_request->getParameter('play') ?>;
     <div>
       <div class="controls">
         <div class="statusbar">
-          <div class="loading"></div>
-          <div class="position"></div>
+          <div class="loading">&nbsp;</div>
+          <div class="position">&nbsp;</div>
         </div>
         <div class="timing">
           <div id="sm2_timing">

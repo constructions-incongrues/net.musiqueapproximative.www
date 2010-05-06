@@ -23,8 +23,6 @@ $(document).ready(function() {
                     (((this.bytesLoaded / this.bytesTotal) * 100) + '%'));
               },
               whileplaying : function() {
-                // TODO : TBR
-                console.log(this.position / this.durationEstimate * 100 + '%');
                 $('div.position').css('width',
                     (((this.position / this.durationEstimate) * 100) + '%'));
               },
