@@ -1,4 +1,9 @@
 <?php use_helper('Markdown') ?>
+
+<script type="text/javascript">
+soundManager.url = '<?php echo $sf_request->getRelativeUrlRoot() ?>/swf/';
+</script>
+
 <div id="browse-all">
   <p>
     <?php echo link_to(sprintf('Browse all tracks (%d)', $posts_count), '@post_list', array('id' => 'index-toggle')) ?> <span id="loading" style="display: none;">(loading...)</span>
@@ -43,11 +48,3 @@
 
   </div>
 </div>
-<script type="text/javascript">
-  $.fn.media.defaults.mp3Player = '<?php echo $sf_request->getRelativeUrlRoot() ?>/swf/mediaplayer.swf';
-  $('.media').media({
-    width:     470,
-    height:    20,
-    flashvars: {'type': 'mp3'}
-  });
-</script>
