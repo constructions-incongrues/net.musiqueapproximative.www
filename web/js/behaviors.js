@@ -23,14 +23,23 @@ $(document).ready(function() {
                     (((this.bytesLoaded / this.bytesTotal) * 100) + '%'));
               },
               whileplaying : function() {
+                // TODO : TBR
+                console.log(this.position / this.durationEstimate * 100 + '%');
                 $('div.position').css('width',
                     (((this.position / this.durationEstimate) * 100) + '%'));
               },
               onfinish : function() {
-                alert('Done !');
+                $.get(
+                    window.relative_url_root + '/frontend_dev.php/posts/next',
+                    {}, function(data) {
+                      window.location = data + '?play=1';
+                    });
               }
             });
             window.sound.play();
+
+            // TODO : TBR
+            window.sound.mute();
           });
 
       $('a#pause').click(function() {
@@ -40,5 +49,9 @@ $(document).ready(function() {
       $('a#stop').click(function() {
         window.sound.stop();
       });
+
+      if (window.autoplay) {
+        $('a#play').click();
+      }
     };
   });

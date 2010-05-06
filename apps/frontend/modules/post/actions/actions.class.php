@@ -113,4 +113,14 @@ class postActions extends sfActions
     }
     $this->feed = $feed;
   }
+  
+  public function executeNext(sfWebRequest $request)
+  {
+  	$post = Doctrine::getTable('Post')->getRandomPost();
+  	
+  	sfConfig::set('sf_web_debug', false);
+  	
+  	// Pass data to view
+  	$this->post = $post;
+  }
 }

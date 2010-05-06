@@ -17,3 +17,7 @@ post_list:
 post_feed:
   url: /posts/feed
   param: { module: post, action: feed }
+
+post_next:
+  url: /posts/next
+  param: { module: post, action: next }
