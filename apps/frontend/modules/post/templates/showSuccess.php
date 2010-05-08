@@ -26,10 +26,10 @@ window.autoplay = <?php echo $sf_request->getParameter('play', 0) ?>;
     
     <p id="navbar">
       <?php if ($post_previous): ?>
-        <?php echo link_to(image_tag('left-epsilon.jpg'), '@post_show?slug='.$post_previous->slug, array('class' => 'past')) ?>
+        <?php echo link_to(image_tag('left-epsilon.jpg'), '@post_show?slug='.$post_previous->slug, array('class' => 'past', 'title' => sprintf('%s - %s', $post_previous->track_author, $post_previous->track_title))) ?>
       <?php endif; ?>
       <?php if ($post_next): ?>
-        <?php echo link_to(image_tag('right-epsilon.jpg'), '@post_show?slug='.$post_next->slug, array('class' => 'nav')) ?>
+        <?php echo link_to(image_tag('right-epsilon.jpg'), '@post_show?slug='.$post_next->slug, array('class' => 'nav', 'title' => sprintf('%s - %s', $post_next->track_author, $post_next->track_title))) ?>
       <?php endif; ?>
     </p>
     
