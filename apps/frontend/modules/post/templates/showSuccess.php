@@ -2,7 +2,7 @@
 
 <script type="text/javascript">
 soundManager.url = '<?php echo $sf_request->getRelativeUrlRoot() ?>/swf/';
-window.relative_url_root = '<?php echo $sf_request->getRelativeUrlRoot() ?>';
+window.script_name = '<?php echo $sf_request->getScriptName() ?>';
 window.autoplay = <?php echo $sf_request->getParameter('play', 0) ?>;
 </script>
 

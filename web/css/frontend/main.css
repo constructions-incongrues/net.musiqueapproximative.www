@@ -190,13 +190,13 @@ background-color: #eee;
 
 div.loading
 {
-height: 0.5em;
-background-color: red;
+height: 0.2em;
+background-color: #333;
 width: 100%;
 }
 div.position
 {
 height: 0.5em;
-background-color: green;
+background-color: #ccc;
 width: 0%;
 }

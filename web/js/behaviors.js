@@ -27,24 +27,21 @@ $(document).ready(function() {
                     (((this.position / this.durationEstimate) * 100) + '%'));
               },
               onfinish : function() {
-                $.get(
-                    window.relative_url_root + '/frontend_dev.php/posts/next',
-                    {}, function(data) {
-                      window.location = data + '?play=1';
-                    });
+                $.get(window.script_name + '/posts/next', {}, function(data) {
+                  window.location = data + '?play=1';
+                });
               }
             });
             window.sound.play();
-
-            // TODO : TBR
-            window.sound.mute();
           });
 
-      $('a#pause').click(function() {
-        window.sound.pause();
+      $('a#pause').click(function(event) {
+        event.preventDefault();
+        window.sound.togglePause();
       });
 
-      $('a#stop').click(function() {
+      $('a#stop').click(function(event) {
+        event.preventDefault();
         window.sound.stop();
       });
 
