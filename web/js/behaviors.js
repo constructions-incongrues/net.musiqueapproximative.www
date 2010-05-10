@@ -12,6 +12,18 @@ $(document).ready(function() {
 
     // Player
     soundManager.onload = function() {
+
+      $('div.statusbar').click(
+          function(event) {
+            if (window.sound) {
+              var position = (event.pageX - this.offsetLeft)
+                  / $('div.statusbar').width() * 100;
+              window.sound.setPosition(window.sound.durationEstimate / 100
+                  * position);
+              $('div.position').css('width', position + '%');
+            }
+          });
+
       $('a#play').click(
           function(event) {
             event.preventDefault();
@@ -27,9 +39,12 @@ $(document).ready(function() {
                     (((this.position / this.durationEstimate) * 100) + '%'));
               },
               onfinish : function() {
-                $.get(window.script_name + '/posts/next', {}, function(data) {
-                  window.location = data + '?play=1';
-                });
+                var current_post_id = $(this).attr('x-js-postid');
+                $.get(window.script_name + '/posts/next?current='
+                    + current_post_id + '&random=' + window.random, {},
+                    function(data) {
+                      window.location = data + '?play=1';
+                    });
               }
             });
             window.sound.play();
@@ -43,6 +58,7 @@ $(document).ready(function() {
       $('a#stop').click(function(event) {
         event.preventDefault();
         window.sound.stop();
+        $('div.position').css('width', '0%');
       });
 
       if (window.autoplay) {

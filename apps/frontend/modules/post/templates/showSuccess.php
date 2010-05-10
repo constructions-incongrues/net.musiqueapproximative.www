@@ -1,9 +1,11 @@
 <?php use_helper('Markdown') ?>
 
 <script type="text/javascript">
+// Those variables are used in behaviors.js
 soundManager.url = '<?php echo $sf_request->getRelativeUrlRoot() ?>/swf/';
 window.script_name = '<?php echo $sf_request->getScriptName() ?>';
-window.autoplay = <?php echo $sf_request->getParameter('play', 0) ?>;
+window.autoplay    = <?php echo $sf_request->getParameter('play', 0) ?>;
+window.random      = <?php echo $sf_request->getParameter('random', 0) ?>;
 </script>
 
 <div id="browse-all">
@@ -57,9 +59,10 @@ window.autoplay = <?php echo $sf_request->getParameter('play', 0) ?>;
    </p>
    
    <p>
-   	 <a id="play" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/tracks/<?php echo $post->track_filename ?>">Play</a> |
+     <a id="play" x-js-postid="<?php echo $post->id ?>" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/tracks/<?php echo $post->track_filename ?>">Play</a> |
    	 <a id="pause" href="#">Pause</a> |
    	 <a id="stop" href="#">Stop</a> |
+     <!-- <a id="random" class="not" href="<?php echo url_for(sprintf('@post_show?slug=%s&play=%s&random=0', $post->slug, $sf_request->getParameter('play', '0')))?>">Random</a> |-->
    	 <a id="download" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/tracks/<?php echo $post->track_filename ?>">Download</a>
    </p>
 
