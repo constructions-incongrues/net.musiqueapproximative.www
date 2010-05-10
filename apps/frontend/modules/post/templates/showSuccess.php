@@ -44,15 +44,14 @@ window.random      = <?php echo $sf_request->getParameter('random', 0) ?>;
         <div class="statusbar">
           <div class="loading">&nbsp;</div>
           <div class="position">&nbsp;</div>
-        </div>
-        <div class="timing">
-          <div id="sm2_timing">
-            <span class="sm2_position"></span>
-            <span class="sm2_total"></span>
-          </div>
+          <span id="timing" style="float:right; font-size: 0.7em;">
+          	<span class="current">0:00</span> / <span class="total">0:00</span>
+          </span>
         </div>
       </div>
     </div>
+    
+   <p style="clear:both;"></p>
    
    <p>
    	<center><?php echo $post->track_author ?> - <?php echo $post->track_title ?></center>

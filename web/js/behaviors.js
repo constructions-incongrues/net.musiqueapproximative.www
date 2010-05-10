@@ -1,3 +1,15 @@
+window.getTime = function(nMSec, bAsString) {
+  // convert milliseconds to mm:ss, return as object literal or string
+  var nSec = Math.floor(nMSec / 1000);
+  var min = Math.floor(nSec / 60);
+  var sec = nSec - (min * 60);
+  // if (min == 0 && sec == 0) return null; // return 0:00 as null
+  return (bAsString ? (min + ':' + (sec < 10 ? '0' + sec : sec)) : {
+    'min' : min,
+    'sec' : sec
+  });
+}
+
 $(document).ready(function() {
 
   // "Browse tracks"
@@ -13,6 +25,31 @@ $(document).ready(function() {
     // Player
     soundManager.onload = function() {
 
+      window.sound = soundManager.createSound( {
+        id : 'track',
+        url : $('a#play').attr('href'),
+        autoLoad : true,
+        whileloading : function() {
+          $('div.loading').css('width',
+              (((this.bytesLoaded / this.bytesTotal) * 100) + '%'));
+        },
+        whileplaying : function() {
+          $('div.position').css('width',
+              (((this.position / this.durationEstimate) * 100) + '%'));
+          $('#timing span.current').text(window.getTime(this.position, true));
+        },
+        onfinish : function() {
+          var current_post_id = $(event.target).attr('x-js-postid');
+          $.get(window.script_name + '/posts/next?current=' + current_post_id
+              + '&random=' + window.random, {}, function(data) {
+            window.location = data + '?play=1';
+          });
+        },
+        onload : function() {
+          $('#timing span.total').text(window.getTime(this.duration, true));
+        }
+      });
+
       $('div.statusbar').click(
           function(event) {
             if (window.sound) {
@@ -24,31 +61,10 @@ $(document).ready(function() {
             }
           });
 
-      $('a#play').click(
-          function(event) {
-            event.preventDefault();
-            window.sound = soundManager.createSound( {
-              id : 'track',
-              url : $(this).attr('href'),
-              whileloading : function() {
-                $('div.loading').css('width',
-                    (((this.bytesLoaded / this.bytesTotal) * 100) + '%'));
-              },
-              whileplaying : function() {
-                $('div.position').css('width',
-                    (((this.position / this.durationEstimate) * 100) + '%'));
-              },
-              onfinish : function() {
-                var current_post_id = $(this).attr('x-js-postid');
-                $.get(window.script_name + '/posts/next?current='
-                    + current_post_id + '&random=' + window.random, {},
-                    function(data) {
-                      window.location = data + '?play=1';
-                    });
-              }
-            });
-            window.sound.play();
-          });
+      $('a#play').click(function(event) {
+        event.preventDefault();
+        window.sound.play();
+      });
 
       $('a#pause').click(function(event) {
         event.preventDefault();
