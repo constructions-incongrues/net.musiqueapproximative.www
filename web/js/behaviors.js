@@ -43,6 +43,7 @@ $(document).ready(function() {
       $('a#stop').click(function(event) {
         event.preventDefault();
         window.sound.stop();
+        $('div.position').css('width', '0%');
       });
 
       if (window.autoplay) {
