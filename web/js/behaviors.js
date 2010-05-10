@@ -29,6 +29,7 @@ $(document).ready(function() {
         id : 'track',
         url : $('a#play').attr('href'),
         autoLoad : true,
+        autoPlay : window.autoplay,
         whileloading : function() {
           $('div.loading').css('width',
               (((this.bytesLoaded / this.bytesTotal) * 100) + '%'));
@@ -76,9 +77,5 @@ $(document).ready(function() {
         window.sound.stop();
         $('div.position').css('width', '0%');
       });
-
-      if (window.autoplay) {
-        $('a#play').click();
-      }
     };
   });
