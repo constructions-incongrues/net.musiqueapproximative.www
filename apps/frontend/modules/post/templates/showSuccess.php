@@ -61,8 +61,10 @@ window.random      = <?php echo $sf_request->getParameter('random', 0) ?>;
      <a id="play" x-js-postid="<?php echo $post->id ?>" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/tracks/<?php echo $post->track_filename ?>">Play</a> |
    	 <a id="pause" href="#">Pause</a> |
    	 <a id="stop" href="#">Stop</a> |
-     <a id="random" class="<?php echo $sf_request->getParameter('random', false) ? '' : 'not' ?>" href="<?php echo url_for(sprintf('@post_show?slug=%s&play=%s&random=%s', $sf_request->getParameter('random', '0'), $post->slug, $sf_request->getParameter('play', '0')))?>">Random</a> |
    	 <a id="download" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/tracks/<?php echo $post->track_filename ?>">Download</a>
+   </p>
+   <p style="font-size: 0.7em;">
+     [<a id="random" title="Trigger random mode" class="<?php echo $sf_request->getParameter('random', false) ? '' : 'not' ?>" href="<?php echo url_for(sprintf('@post_show?slug=%s&play=%s&random=%s', $sf_request->getParameter('random', '0'), $post->slug, $sf_request->getParameter('play', '0')))?>">Random</a>]
    </p>
 
   </div>

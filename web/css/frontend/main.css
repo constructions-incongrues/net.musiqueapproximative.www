@@ -201,6 +201,5 @@ background-color: #ccc;
 width: 0%;
 }
 #random.not {
-  /*text-decoration: line-through !important;*/
-  color: #ddd !important;
+  text-decoration: line-through !important;
 }
