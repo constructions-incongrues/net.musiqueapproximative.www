@@ -39,7 +39,7 @@ $(document).ready(function() {
           $('#timing span.current').text(window.getTime(this.position, true));
         },
         onfinish : function() {
-          var current_post_id = $(event.target).attr('x-js-postid');
+          var current_post_id = $('a#play').attr('x-js-postid');
           $.get(window.script_name + '/posts/next?current=' + current_post_id
               + '&random=' + window.random, {}, function(data) {
             window.location = data + '?play=1';
