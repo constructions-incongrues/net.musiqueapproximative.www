@@ -22,6 +22,54 @@ $(document).ready(function() {
       });
     });
 
+    // Random button
+    $('#random').click(
+        function(event) {
+          event.preventDefault();
+          var current_post_id = $('a#play').attr('x-js-postid');
+          if ($(this).hasClass('not')) {
+            $(this).removeClass('not');
+            window.random = 1;
+            $.get(window.script_name + '/posts/random?current='
+                + current_post_id, {}, function(data) {
+              $('a.past').attr(
+                  'href',
+                  data + '?play=' + window.autoplay + '&random='
+                      + window.random);
+            });
+            $.get(window.script_name + '/posts/random?current='
+                + current_post_id, {}, function(data) {
+              $('a.nav').attr(
+                  'href',
+                  data + '?play=' + window.autoplay + '&random='
+                      + window.random);
+            });
+          } else {
+            $(this).addClass('not');
+            window.random = 0;
+            $.get(
+                window.script_name + '/posts/prev?current=' + current_post_id,
+                {}, function(data) {
+                  $('a.past').attr(
+                      'href',
+                      data + '?play=' + window.autoplay + '&random='
+                          + window.random);
+                });
+            $.get(
+                window.script_name + '/posts/next?current=' + current_post_id,
+                {}, function(data) {
+                  $('a.nav').attr(
+                      'href',
+                      data + '?play=' + window.autoplay + '&random='
+                          + window.random);
+                });
+          }
+
+          // TODO : get appropriate information and update links titles
+          $('a.nav').attr('title', '');
+          $('a.past').attr('title', '');
+        });
+
     // Player
     soundManager.onload = function() {
 
@@ -43,11 +91,8 @@ $(document).ready(function() {
         },
         onfinish : function() {
           var current_post_id = $('a#play').attr('x-js-postid');
-          $.get(window.script_name + '/posts/next?current=' + current_post_id
-              + '&random=' + window.random, {}, function(data) {
-            window.location = data + '?play=1';
-          });
-        },
+          window.location = $('a.past').attr('href');
+        }
       });
 
       $('div.statusbar').click(

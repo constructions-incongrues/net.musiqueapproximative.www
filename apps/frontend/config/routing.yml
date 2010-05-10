@@ -21,3 +21,11 @@ post_feed:
 post_next:
   url: /posts/next
   param: { module: post, action: next }
+  
+post_prev:
+  url: /posts/prev
+  param: { module: post, action: prev }
+
+post_random:
+  url: /posts/random
+  param: { module: post, action: random }

@@ -28,10 +28,10 @@ window.random      = <?php echo $sf_request->getParameter('random', 0) ?>;
     
     <p id="navbar">
       <?php if ($post_previous): ?>
-        <?php echo link_to(image_tag('left-epsilon.jpg'), sprintf('@post_show?slug=%s&play=%d', $post_previous->slug, $sf_request->getParameter('play', 0)), array('class' => 'past', 'title' => sprintf('%s - %s', $post_previous->track_author, $post_previous->track_title))) ?>
+        <?php echo link_to(image_tag('left-epsilon.jpg'), sprintf('@post_show?slug=%s&play=%d&random=%d', $post_previous->slug, $sf_request->getParameter('play', 0), $sf_request->getParameter('random', 0)), array('class' => 'past', 'title' => sprintf('%s - %s', $post_previous->track_author, $post_previous->track_title))) ?>
       <?php endif; ?>
       <?php if ($post_next): ?>
-        <?php echo link_to(image_tag('right-epsilon.jpg'), sprintf('@post_show?slug=%s&play=%d', $post_next->slug, $sf_request->getParameter('play', 0)), array('class' => 'nav', 'title' => sprintf('%s - %s', $post_next->track_author, $post_next->track_title))) ?>
+        <?php echo link_to(image_tag('right-epsilon.jpg'), sprintf('@post_show?slug=%s&play=%d&random=%d', $post_next->slug, $sf_request->getParameter('play', 0), $sf_request->getParameter('random', 0)), array('class' => 'nav', 'title' => sprintf('%s - %s', $post_next->track_author, $post_next->track_title))) ?>
       <?php endif; ?>
     </p>
     
@@ -61,7 +61,7 @@ window.random      = <?php echo $sf_request->getParameter('random', 0) ?>;
      <a id="play" x-js-postid="<?php echo $post->id ?>" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/tracks/<?php echo $post->track_filename ?>">Play</a> |
    	 <a id="pause" href="#">Pause</a> |
    	 <a id="stop" href="#">Stop</a> |
-     <!-- <a id="random" class="not" href="<?php echo url_for(sprintf('@post_show?slug=%s&play=%s&random=0', $post->slug, $sf_request->getParameter('play', '0')))?>">Random</a> |-->
+     <a id="random" class="<?php echo $sf_request->getParameter('random', false) ? '' : 'not' ?>" href="<?php echo url_for(sprintf('@post_show?slug=%s&play=%s&random=%s', $sf_request->getParameter('random', '0'), $post->slug, $sf_request->getParameter('play', '0')))?>">Random</a> |
    	 <a id="download" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/tracks/<?php echo $post->track_filename ?>">Download</a>
    </p>
 

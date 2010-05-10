@@ -14,10 +14,10 @@ default:
 
   stylesheets:    [frontend/main.css]
 
-  javascripts:    ["http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", soundmanager2-nodebug-jsmin.js, "behaviors.js?v=5"]
+  javascripts:    ["http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", soundmanager2-nodebug-jsmin.js, "behaviors.js?v=6"]
 
   has_layout:     true
   layout:         layout
 
-nextSuccess:
+randomSuccess:
   has_layout: false
