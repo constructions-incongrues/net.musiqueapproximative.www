@@ -200,3 +200,6 @@ height: 0.5em;
 background-color: #ccc;
 width: 0%;
 }
+#random.not {
+  text-decoration: line-through;
+}
