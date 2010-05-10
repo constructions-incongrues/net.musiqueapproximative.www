@@ -33,6 +33,8 @@ $(document).ready(function() {
         whileloading : function() {
           $('div.loading').css('width',
               (((this.bytesLoaded / this.bytesTotal) * 100) + '%'));
+          $('#timing span.total').text(
+              window.getTime(this.durationEstimate, true));
         },
         whileplaying : function() {
           $('div.position').css('width',
@@ -46,9 +48,6 @@ $(document).ready(function() {
             window.location = data + '?play=1';
           });
         },
-        onload : function() {
-          $('#timing span.total').text(window.getTime(this.duration, true));
-        }
       });
 
       $('div.statusbar').click(
