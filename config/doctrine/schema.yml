@@ -12,7 +12,9 @@ Post:
       autoincrement: true
       primary: true
       notnull: true
-    body: string
+    body: 
+      type:    string
+      notnull: true
     track_title: string
     track_author: string
     track_filename: string
