@@ -22,6 +22,26 @@ $(document).ready(function() {
       });
     });
 
+    if (window.random) {
+      var current_post_id = $('a#play').attr('x-js-postid');
+      $
+          .get(window.script_name + '/posts/random?current=' + current_post_id,
+              {}, function(data) {
+                $('a.past').attr(
+                    'href',
+                    data + '?play=' + window.autoplay + '&random='
+                        + window.random);
+              });
+      $
+          .get(window.script_name + '/posts/random?current=' + current_post_id,
+              {}, function(data) {
+                $('a.nav').attr(
+                    'href',
+                    data + '?play=' + window.autoplay + '&random='
+                        + window.random);
+              });
+    }
+
     // Random button
     $('#random').click(
         function(event) {
