@@ -22,6 +22,10 @@ $(document).ready(function() {
       });
     });
 
+    $('a.email-subscription-link').click(function(event) {
+      $('div#email-subscription').toggle();
+    });
+
     if (window.random) {
       var current_post_id = $('a#play').attr('x-js-postid');
       $

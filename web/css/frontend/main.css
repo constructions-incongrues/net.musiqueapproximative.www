@@ -203,3 +203,6 @@ width: 0%;
 #random.not {
   text-decoration: line-through !important;
 }
+div#email-subscription {
+  display: none;
+}
