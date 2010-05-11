@@ -35,7 +35,7 @@
             <p>Veuillez saisir votre adresse email :</p>
             <p><input type="text" style="width:140px" name="email"/></p>
             <input type="hidden" value="musique-approximative" name="uri"/>
-            <input type="hidden" name="loc" value="fr_FR"/
+            <input type="hidden" name="loc" value="fr_FR"/>
             <p>Il est bien entendu qu'on ne s'en servira pas pour autre chose que de vous envoyer de la musique.</p>
             <input type="submit" value="Recevoir les nouveaux morceaux par email" /></p>
           </form>
