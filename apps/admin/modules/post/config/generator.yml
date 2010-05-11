@@ -29,6 +29,9 @@ generator:
         is_online:
           label: "Activer ?"
           help: "Si la case n est pas cochée, le morceau n est pas affiché sur le site."
+        buy_url:
+          label: "Lien pour acheter"
+          help: "Éventuel lien permettant d'acheter les productions de l'artiste sus-mentionné"
       list:
         display: [=track_title, track_author, publish_on, is_online]
       filter: 
@@ -36,6 +39,7 @@ generator:
       form: 
         display: 
           Track: [body, _body_preview, track_author, track_title, track_filename]
+          Support: [buy_url]
           Publication: [publish_on, is_online]
       edit:    ~
       new:     ~

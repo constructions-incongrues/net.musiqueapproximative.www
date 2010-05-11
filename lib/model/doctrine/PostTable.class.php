@@ -2,7 +2,7 @@
 
 class PostTable extends Doctrine_Table
 {
-  const FIELDS_BASIC = 'p.body, p.track_title, p.track_author, p.track_filename, p.slug, u.username';
+  const FIELDS_BASIC = 'p.body, p.track_title, p.track_author, p.track_filename, p.slug, p.buy_url, u.username';
 
   /**
    * Returns last online post.

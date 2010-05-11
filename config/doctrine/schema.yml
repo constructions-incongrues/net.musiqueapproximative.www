@@ -17,6 +17,7 @@ Post:
     track_author: string
     track_filename: string
     track_md5: string(32)
+    buy_url: string(255)
     svn_revision: integer
     publish_on: 
       type: datetime

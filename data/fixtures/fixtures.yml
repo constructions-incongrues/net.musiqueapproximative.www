@@ -13,4 +13,5 @@ Post:
     publish_on: <?php echo date('Y-m-d H:i:s', $ts_last)."'\n"; ?>
     is_online: <?php echo rand(0, 1)."\n" ?>
     contributor_id: <?php echo rand(1, 2)."\n" ?>
+    buy_url: <?php echo (bool)rand(0, 1) ? 'http://buy.example.com' : '', "\n" ?>
 <?php endfor; ?>
