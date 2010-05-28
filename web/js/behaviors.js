@@ -144,7 +144,6 @@ $(document).ready(function() {
 
       $('a#play').click(function(event) {
         event.preventDefault();
-        window.notifyCurrentTrack();
         window.sound.play();
       });
 
