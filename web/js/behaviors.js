@@ -8,7 +8,16 @@ window.getTime = function(nMSec, bAsString) {
     'min' : min,
     'sec' : sec
   });
-}
+};
+
+window.notifyCurrentTrack = function() {
+  var notifier = new Notifier();
+  if (window.webkitNotifications.checkPermission()) {
+    notifier.RequestPermission(window.notifyCurrentTrack);
+  } else {
+    notifier.Notify('', 'Currently playing', $('#track-infos').text());
+  }
+};
 
 $(document).ready(function() {
 
@@ -108,12 +117,21 @@ $(document).ready(function() {
           $('#timing span.total').text(
               window.getTime(this.durationEstimate, true));
         },
+        onplay : function() {
+          window.notifyCurrentTrack();
+        },
         whileplaying : function() {
           $('div.position').css('width',
               (((this.position / this.durationEstimate) * 100) + '%'));
           $('#timing span.current').text(window.getTime(this.position, true));
         },
         onfinish : function() {
+          var notifier = new Notifier();
+          if (notifier.HasSupport()) {
+            if (!notifier.Notify('', 'Title', 'BODY')) {
+              notifier.RequestPermission();
+            }
+          }
           var current_post_id = $('a#play').attr('x-js-postid');
           window.location = $('a.past').attr('href');
         }
@@ -132,6 +150,7 @@ $(document).ready(function() {
 
       $('a#play').click(function(event) {
         event.preventDefault();
+        window.notifyCurrentTrack();
         window.sound.play();
       });
 
