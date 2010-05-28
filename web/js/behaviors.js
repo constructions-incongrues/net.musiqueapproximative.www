@@ -126,12 +126,6 @@ $(document).ready(function() {
           $('#timing span.current').text(window.getTime(this.position, true));
         },
         onfinish : function() {
-          var notifier = new Notifier();
-          if (notifier.HasSupport()) {
-            if (!notifier.Notify('', 'Title', 'BODY')) {
-              notifier.RequestPermission();
-            }
-          }
           var current_post_id = $('a#play').attr('x-js-postid');
           window.location = $('a.past').attr('href');
         }

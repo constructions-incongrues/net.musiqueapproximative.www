@@ -14,7 +14,7 @@ default:
 
   stylesheets:    ["frontend/main.css?v=3"]
 
-  javascripts:    ["http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", soundmanager2-nodebug-jsmin.js, "behaviors.js?v=8", notifier.js]
+  javascripts:    ["http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", soundmanager2-nodebug-jsmin.js, "behaviors.js?v=9", notifier.js]
 
   has_layout:     true
   layout:         layout
