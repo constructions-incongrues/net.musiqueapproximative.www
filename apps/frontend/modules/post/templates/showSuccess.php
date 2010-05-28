@@ -54,7 +54,7 @@ window.random      = <?php echo $sf_request->getParameter('random', 0) ?>;
    <p style="clear:both;"></p>
    
    <p>
-   	<center><?php echo $post->track_author ?> - <?php echo $post->track_title ?></center>
+   	<center id="track-infos"><?php echo $post->track_author ?> - <?php echo $post->track_title ?></center>
    </p>
    
    <p>
