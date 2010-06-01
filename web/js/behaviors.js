@@ -12,10 +12,12 @@ window.getTime = function(nMSec, bAsString) {
 
 window.notifyCurrentTrack = function() {
   var notifier = new Notifier();
-  if (window.webkitNotifications.checkPermission()) {
-    notifier.RequestPermission(window.notifyCurrentTrack);
-  } else {
-    notifier.Notify('', 'Currently playing', $('#track-infos').text());
+  if (notifier.HasSupport()) {
+    if (window.webkitNotifications.checkPermission()) {
+      notifier.RequestPermission(window.notifyCurrentTrack);
+    } else {
+      notifier.Notify('', 'Currently playing', $('#track-infos').text());
+    }
   }
 };
 
