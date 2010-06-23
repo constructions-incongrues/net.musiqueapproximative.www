@@ -9,6 +9,7 @@ h4 {
   color: #fff;
 }
 
+H4 a:hover {color:#FFF;}
 /* comment text */
 
 #posts
@@ -49,9 +50,9 @@ h4 {
 {
 color:#FFF;}
 
-#t-trax a:hover
+#t-trax:hover
 {
-  color: #fff;
+  color: #fff!important;
 }
 
 #loading {
