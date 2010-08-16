@@ -14,7 +14,7 @@ window.random      = <?php echo $sf_request->getParameter('random', 0) ?>;
   </p>
 </div>
 
-<div id="browse"> 
+<div id="browse">
   <form method="get" action="<?php echo url_for('@post_list') ?>">
     <input type="text" class="search" name="q" value="<?php echo $sf_request->getParameter('q') ?>"/>
     <input type="submit" class="submit" value="Search !" />
@@ -25,7 +25,7 @@ window.random      = <?php echo $sf_request->getParameter('random', 0) ?>;
 
 <div id="posts">
   <div style="display: block;">
-    
+
     <p id="navbar">
       <?php if ($post_previous): ?>
         <?php echo link_to(image_tag('left-epsilon.jpg'), sprintf('@post_show?slug=%s&play=%d&random=%d', $post_previous->slug, $sf_request->getParameter('play', 1), $sf_request->getParameter('random', 0)), array('class' => 'past', 'title' => sprintf('%s - %s', $post_previous->track_author, $post_previous->track_title))) ?>
@@ -34,7 +34,7 @@ window.random      = <?php echo $sf_request->getParameter('random', 0) ?>;
         <?php echo link_to(image_tag('right-epsilon.jpg'), sprintf('@post_show?slug=%s&play=%d&random=%d', $post_next->slug, $sf_request->getParameter('play', 1), $sf_request->getParameter('random', 0)), array('class' => 'nav', 'title' => sprintf('%s - %s', $post_next->track_author, $post_next->track_title))) ?>
       <?php endif; ?>
     </p>
-    
+
     <p><?php echo Markdown($post->body) ?></p>
 
     <p id="author">par <?php echo link_to($post->getContributorDisplayName(), '@post_list?contributor='.$post->getSfGuardUser()->username) ?></p>
@@ -50,13 +50,13 @@ window.random      = <?php echo $sf_request->getParameter('random', 0) ?>;
         </div>
       </div>
     </div>
-    
+
    <p style="clear:both;"></p>
-   
+
    <p>
    	<center id="track-infos"><?php echo $post->track_author ?> - <?php echo $post->track_title ?></center>
    </p>
-   
+
    <p>
      <a id="play" x-js-postid="<?php echo $post->id ?>" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/tracks/<?php echo $post->track_filename ?>">Play</a> |
    	 <a id="pause" href="#">Pause</a> |
@@ -65,6 +65,7 @@ window.random      = <?php echo $sf_request->getParameter('random', 0) ?>;
    	 <?php if ($post->buy_url): ?>
    	   | <a href="<?php echo $post->buy_url?>" title="Support the artist !">Buy</a>
    	 <?php endif; ?>
+   	 | <a href="http://www.musiques-incongrues.net/forum/discussion/816/9/web-musique-approximative/" title="Discuter du morceau en bonne compagnie sur le forum des Musiques Incongrues">En causer</a>
 
    </p>
    <p style="font-size: 0.7em;">
