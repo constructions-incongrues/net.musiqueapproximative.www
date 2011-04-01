@@ -3,6 +3,14 @@
   <head>
     <?php include_http_metas() ?>
     <?php include_metas() ?>
+    
+    <!-- Opengraph -->
+    <meta property="og:site_name" content="Musique Approximative" />
+    <meta property="og:title" content="<?php echo $sf_response->getTitle() ?>" />
+    <meta property="og:type" content="song" />
+    <meta property="og:url" content="<?php echo sprintf('http://%s%s', $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI']) ?>" />
+    <meta property="og:image" content="http://musiqueapproximative.net/images/logo.png" />
+    
     <?php include_title() ?>
     <link rel="shortcut icon" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/images/favico.png" />
     <?php include_stylesheets() ?>
@@ -42,7 +50,7 @@
         </div>
       </p>
       <p>
-        Ce projet a été développé par <a href="https://launchpad.net/~constructions-incongrues">Constructions Incongrues</a> 
+        Musique Approximative v0.2.0 a été développé par <a href="https://launchpad.net/~constructions-incongrues">Constructions Incongrues</a> 
         et est hébergé par <a href="http://www.pastis-hosting.net">Pastis Hosting</a>.
       </p>
       <p>
