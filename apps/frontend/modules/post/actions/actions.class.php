@@ -29,6 +29,14 @@ class postActions extends sfActions
     // Get number of online posts
     $posts_count = Doctrine::getTable('Post')->countOnlinePosts();
 
+    // Define opengraph metadata (see http://ogp.me/)
+    $this->getResponse()->addMeta('og:description', $post->body);
+    $this->getResponse()->addMeta('og:audio', sprintf('http://www.musiqueapproximative.net/tracks/%s', $post->track_filename));
+    $this->getResponse()->addMeta('og:audio:title', $post->track_title);
+    $this->getResponse()->addMeta('og:audio:artist', $post->track_author);
+    $this->getResponse()->addMeta('og:audio:album', 'Unknown album');
+    $this->getResponse()->addMeta('og:audio:type', 'application/mp3');
+    
     // Pass data to view
     $this->post = $post;
     $this->posts_count = $posts_count;
