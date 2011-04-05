@@ -50,11 +50,11 @@
         </div>
       </p>
       <p>
-        Musique Approximative v0.2.0 a été développé par <a href="https://launchpad.net/~constructions-incongrues">Constructions Incongrues</a> 
+        Musique Approximative v0.2.1 est développé par <a href="http://www.constructions-incongrues.net/">Constructions Incongrues</a> 
         et est hébergé par <a href="http://www.pastis-hosting.net">Pastis Hosting</a>.
       </p>
       <p>
-        Le code source du projet est <a href="https://launchpad.net/musique-approximative">distribué</a> sous licence 
+        Le code source du projet est <a href="https://github.com/contructions-incongrues/musique-approximative">distribué</a> sous licence 
         <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU AGPLv3</a>.
       </p>
       <p>Contact : bertier at musiqueapproximative point net</p>
