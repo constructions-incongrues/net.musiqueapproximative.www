@@ -90,7 +90,7 @@ class postActions extends sfActions
       $publish_timestamp = mktime($strf['tm_hour'], $strf['tm_min'], $strf['tm_sec'], $strf['tm_mon'] + 1, $strf['tm_mday'], $strf['tm_year'] + 1900);
 
       // Canonical URL to post's associated file
-      $track_file_url = htmlspecialchars(sprintf('http://www.musiqueapproximative.net/tracks/%s', $post->track_filename));
+      $track_file_url = htmlspecialchars(sprintf('http://www.musiqueapproximative.net/tracks/%s', rawurlencode($post->track_filename)));
 
       // Make sure no errors are generated when files do not exist (useful in dev mode)
       if (!is_readable(sfConfig::get('sf_web_dir').'/tracks/'.$post->track_filename))
@@ -115,7 +115,7 @@ class postActions extends sfActions
       $enclosure->initialize(array(
         'url'       => $track_file_url,
         'length'    => $file_size,
-        'mimeType'  => 'audio/mp3'
+        'mimeType'  => 'audio/mpeg'
       ));
       $item->setEnclosure($enclosure);
       $feed->addItem($item);
