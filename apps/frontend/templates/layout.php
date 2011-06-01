@@ -22,6 +22,10 @@
   </head>
   <body>
 
+<?php if (function_exists('newrelic_get_browser_timing_header')): ?>
+	<?php echo newrelic_get_browser_timing_header(); ?>
+<?php endif; ?>
+
     <?php echo $sf_content ?>
 
     <div id="maintitle">Musique Approximative</div>
@@ -68,5 +72,10 @@
       var pageTracker = _gat._getTracker("UA-4958604-1");
       pageTracker._trackPageview();
     } catch(err) {}</script>
+
+<?php if (function_exists('newrelic_get_browser_timing_footer')): ?>
+	<?php echo newrelic_get_browser_timing_footer(); ?>
+<?php endif; ?>
+
   </body>
 </html>
