@@ -1,0 +1,2 @@
+all:
+  javascripts: [admin/behaviors.js]
