@@ -37,7 +37,7 @@ window.random      = <?php echo $sf_request->getParameter('random', 0) ?>;
 
     <p><?php echo Markdown($post->body) ?></p>
 
-    <p id="author">par <?php echo link_to($post->getContributorDisplayName(), '@post_list?contributor='.$post->getSfGuardUser()->username) ?></p>
+    <p id="author">par <a href="<?php echo url_for('@post_list?contributor='.$post->getSfGuardUser()->username) ?>" title="Voir toutes les contributions de <?php echo $post->getContributorDisplayName() ?>"><?php echo $post->getContributorDisplayName() ?></a></p>
 
     <div>
       <div class="controls">
@@ -59,8 +59,7 @@ window.random      = <?php echo $sf_request->getParameter('random', 0) ?>;
 
    <p>
      <a id="play" x-js-postid="<?php echo $post->id ?>" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/tracks/<?php echo $post->track_filename ?>">Play</a> |
-   	 <a id="pause" href="#">Pause</a> |
-   	 <a id="stop" href="#">Stop</a> /
+   	 <a id="pause" href="#">Pause</a> /
    	 <a href="<?php echo $sf_request->getRelativeUrlRoot() ?>/tracks/<?php echo $post->track_filename ?>">Download</a>
    	 <?php if ($post->buy_url): ?>
    	   | <a href="<?php echo $post->buy_url?>" title="Support the artist !">Buy</a>
