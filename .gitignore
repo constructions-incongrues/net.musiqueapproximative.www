@@ -2,3 +2,7 @@
 .project
 .settings/
 cache/*
+log/*
+web/sf
+web/tracks/*
+data/sql
