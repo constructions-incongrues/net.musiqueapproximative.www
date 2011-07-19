@@ -68,6 +68,12 @@ class postActions extends sfActions
       }
     }
 
+    // Formats specifics
+    if ($request->getParameter('sf_format') == 'csv') {
+    	$this->setLayout(false);
+    	$this->getResponse()->setContentType('text/csv');
+    }
+    
     // Pass data to view
     $this->posts = $posts;
     $this->list_title = $list_title;
