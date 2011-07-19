@@ -73,6 +73,10 @@ class postActions extends sfActions
     	$this->setLayout(false);
     	$this->getResponse()->setContentType('text/csv');
     }
+    if ($request->getParameter('sf_format') == 'max') {
+    	$this->setLayout(false);
+    	$this->getResponse()->setContentType('application/maxmsp+text');
+    }
     
     // Pass data to view
     $this->posts = $posts;
