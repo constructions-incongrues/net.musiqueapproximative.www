@@ -15,10 +15,7 @@ class postActions extends autoPostActions
 {
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
-    if (!$this->getUser()->hasCredential('EditOthersPosts'))
-    {
-      $form->getObject()->contributor_id = $this->getUser()->getGuardUser()->id;
-    }
+    $form->getObject()->contributor_id = $this->getUser()->getGuardUser()->id;
     parent::processForm($request, $form);
   }
 

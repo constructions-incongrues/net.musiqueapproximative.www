@@ -23,16 +23,18 @@ window.notifyCurrentTrack = function() {
 
 $(document).ready(function() {
 
-  // "Browse tracks"
-    $('#index-toggle').click(function(e) {
-      e.preventDefault();
-      $('#loading').fadeIn();
-      $('#index').load($(e.target).attr('href'), function() {
-        $('#index').toggle();
-        $('#loading').fadeOut();
+    // "Browse tracks"
+	$('#index-toggle').toggle(function(event) {
+      $('#index').load($(event.target).attr('href'), function() {
+	      $('#index').show();
+	      $('#loading').fadeOut();
       });
-    });
-
+      return false;
+	}, function() {
+		$('#index, #loading').hide();
+		return false;
+	});
+	
     $('a.email-subscription-link').click(function(event) {
       $('div#email-subscription').toggle();
     });

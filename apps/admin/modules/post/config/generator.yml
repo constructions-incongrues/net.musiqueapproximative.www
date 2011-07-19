@@ -22,10 +22,13 @@ generator:
             Il peut être mis en forme avec la syntax Markdown : http://daringfireball.net/projects/markdown/syntax
         track_title: { label: "Titre du morceau" }
         track_author: { label: "Auteur du morceau" }
-        track_filename: { label: "Le morceau !", help: "Au format MP3. Le nom du fichier peut contenir n importe quels caractères ;)" }
+        track_filename: { label: "Le morceau !", help: "Au format MP3." }
         publish_on:
           label: "Date de publication"
           help: "Date et heure à laquelle le morceau sera publié."
+        is_unique:
+          label: "Morceau inédit ?"
+          help: "Cocher la case pour vérifier que le morceau n'a pas déjà été posté sur le site."
         is_online:
           label: "Activer ?"
           help: "Si la case n est pas cochée, le morceau n est pas affiché sur le site."
@@ -40,6 +43,14 @@ generator:
         display: 
           Track: [body, _body_preview, track_author, track_title, track_filename]
           Support: [buy_url]
+          Publication: [publish_on, is_unique, is_online]
+      edit:
+        display: 
+          Track: [body, _body_preview, track_author, track_title, track_filename]
+          Support: [buy_url]
           Publication: [publish_on, is_online]
-      edit:    ~
-      new:     ~
+      new:
+        display: 
+          Track: [body, _body_preview, track_author, track_title, track_filename]
+          Support: [buy_url]
+          Publication: [publish_on, is_unique, is_online]      
