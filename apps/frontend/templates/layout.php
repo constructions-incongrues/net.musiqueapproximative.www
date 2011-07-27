@@ -56,7 +56,7 @@
         </div>
       </p>
       <p>
-        Musique Approximative v0.4.1 est développé par <a href="http://www.constructions-incongrues.net/">Constructions Incongrues</a> 
+        Musique Approximative v0.4.2 est développé par <a href="http://www.constructions-incongrues.net/">Constructions Incongrues</a> 
         et est hébergé par <a href="http://www.pastis-hosting.net">Pastis Hosting</a>.
       </p>
       <p>
