@@ -69,13 +69,14 @@ class postActions extends sfActions
     }
 
     // Formats specifics
-    if ($request->getParameter('sf_format') == 'csv') {
-    	$this->setLayout(false);
-    	$this->getResponse()->setContentType('text/csv');
-    }
-    if ($request->getParameter('sf_format') == 'max') {
-    	$this->setLayout(false);
-    	$this->getResponse()->setContentType('application/maxmsp+text');
+    $formats = array(
+    	'csv'  => array('layout' => false, 'contentType' => 'text/csv'),
+    	'max'  => array('layout' => false, 'contentType' => 'application/maxmsp+text'),
+    	'xspf' => array('layout' => false, 'contentType' => 'application/xspf+xml')
+    );
+    if (in_array($request->getParameter('sf_format'), array_keys($formats))) {
+    	$this->setLayout($formats[$request->getParameter('sf_format')]['layout']);
+    	$this->getResponse()->setContentType($formats[$request->getParameter('sf_format')]['contentType']);
     }
     
     // Pass data to view
