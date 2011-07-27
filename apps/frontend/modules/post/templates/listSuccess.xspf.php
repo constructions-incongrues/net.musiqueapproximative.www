@@ -6,6 +6,8 @@ if (defined('E_DEPRECATED')) {
 } else {
 	$errorLevel = error_reporting(E_ALL & ~E_NOTICE);
 }
+
+set_include_path(get_include_path().':/usr/share/php');
 require('File/XSPF.php');
 
 $playlist = new File_XSPF();
@@ -34,6 +36,6 @@ foreach ($posts as $post) {
 	$track->addLocation($location);
 	$playlist->addTrack($track);
 }
-echo $playlist->toString();
+echo str_replace('<?xml version="1.0"?>', '<?xml version="1.0" encoding="utf-8"?>', $playlist->toString());
 error_reporting($errorLevel);
 ?>
