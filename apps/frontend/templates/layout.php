@@ -13,6 +13,8 @@
     
     <?php include_title() ?>
     <link rel="shortcut icon" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/images/favico.png" />
+    <link rel="alternate" type="application/xspf+xml" title="La playlist au format XSPF" href="<?php echo url_for('@post_list?sf_format=xspf') ?>" />
+        
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
     <!--
@@ -54,7 +56,7 @@
         </div>
       </p>
       <p>
-        Musique Approximative v0.3.5 est développé par <a href="http://www.constructions-incongrues.net/">Constructions Incongrues</a> 
+        Musique Approximative v0.4.0 est développé par <a href="http://www.constructions-incongrues.net/">Constructions Incongrues</a> 
         et est hébergé par <a href="http://www.pastis-hosting.net">Pastis Hosting</a>.
       </p>
       <p>
