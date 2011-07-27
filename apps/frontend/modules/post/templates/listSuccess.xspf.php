@@ -1,6 +1,11 @@
 <?php 
-// TODO : this should not be in view
-$errorLevel = error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
+// TODO : all this should not be in view
+
+if (defined('E_DEPRECATED')) {
+	$errorLevel = error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
+} else {
+	$errorLevel = error_reporting(E_ALL & ~E_NOTICE);
+}
 require('File/XSPF.php');
 
 $playlist = new File_XSPF();
