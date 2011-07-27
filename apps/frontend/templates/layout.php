@@ -13,6 +13,8 @@
     
     <?php include_title() ?>
     <link rel="shortcut icon" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/images/favico.png" />
+    <link rel="alternate" type="application/xspf+xml" title="La playlist au format XSPF" href="<?php echo url_for('@post_list?sf_format=xspf') ?>" />
+        
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
     <!--
