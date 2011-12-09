@@ -31,7 +31,8 @@ class postActions extends sfActions
 
     // Define opengraph metadata (see http://ogp.me/)
     $this->getContext()->getConfiguration()->loadHelpers('Markdown');
-    $this->getResponse()->addMeta('og:description', Markdown($post->body));
+    $this->getResponse()->addMeta('og:description', strip_tags(Markdown($post->body)));
+    $this->getResponse()->addMeta('og:image', 'http://musiqueapproximative.net/images/logo.png');
     $this->getResponse()->addMeta('og:audio', sprintf('http://www.musiqueapproximative.net/tracks/%s', $post->track_filename));
     $this->getResponse()->addMeta('og:audio:title', $post->track_title);
     $this->getResponse()->addMeta('og:audio:artist', $post->track_author);
