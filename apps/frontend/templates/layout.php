@@ -3,18 +3,18 @@
   <head>
     <?php include_http_metas() ?>
     <?php include_metas() ?>
-    
+
     <!-- Opengraph -->
     <meta property="og:site_name" content="Musique Approximative" />
     <meta property="og:title" content="<?php echo $sf_response->getTitle() ?>" />
     <meta property="og:type" content="song" />
     <meta property="og:url" content="<?php echo sprintf('http://%s%s', $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI']) ?>" />
     <meta property="og:image" content="http://musiqueapproximative.net/images/logo.png" />
-    
+
     <?php include_title() ?>
     <link rel="shortcut icon" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/images/favico.png" />
     <link rel="alternate" type="application/xspf+xml" title="La playlist au format XSPF" href="<?php echo url_for('@post_list?sf_format=xspf') ?>" />
-        
+
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
     <!--
@@ -34,14 +34,15 @@
 
     <div id="about">
       <p>Ceci est un <em>micropodcast</em>. Vous y trouverez un flux de morceaux glanés au fil du web. </p>
+      <p>Cliquez sur le nom d'un contributeur pour écouter sa playlist</p>
       <p>
         <strong>Contributeurs : </strong>
         <?php include_component('post', 'contributors') ?>
       </p>
       <p>
         Consommer la musique autrement :
-        <a href="http://feeds.feedburner.com/musique-approximative">Podcast</a> / 
-        <a href="http://www.facebook.com/pages/Musique-Approximative/179136112996">Facebook</a> / 
+        <a href="http://feeds.feedburner.com/musique-approximative">Podcast</a> /
+        <a href="http://www.facebook.com/pages/Musique-Approximative/179136112996">Facebook</a> /
         <a href="http://twitter.com/approximazik"">Twitter</a> /
         <a href="#email-subscription" class="email-subscription-link">Email</a>
         <div id="email-subscription">
@@ -56,11 +57,11 @@
         </div>
       </p>
       <p>
-        Musique Approximative v0.4.3 est développé par <a href="http://www.constructions-incongrues.net/">Constructions Incongrues</a> 
+        Musique Approximative v0.4.3 est développé par <a href="http://www.constructions-incongrues.net/">Constructions Incongrues</a>
         et est hébergé par <a href="http://www.pastis-hosting.net">Pastis Hosting</a>.
       </p>
       <p>
-        Le code source du projet est <a href="https://github.com/contructions-incongrues/musique-approximative">distribué</a> sous licence 
+        Le code source du projet est <a href="https://github.com/contructions-incongrues/musique-approximative">distribué</a> sous licence
         <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU AGPLv3</a>.
       </p>
       <p>Contact : bertier at musiqueapproximative point net</p>

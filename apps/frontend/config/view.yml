@@ -6,15 +6,15 @@ default:
     content-type: text/html
 
   metas:
-    title:         Musique Approximative 
+    title:         Musique Approximative
     #description:  symfony project
     #keywords:     symfony, project
-    language:      fr 
+    language:      fr
     #robots:       index, follow
 
   stylesheets:    ["frontend/main.css?v=4"]
 
-  javascripts:    ["http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", soundmanager2-nodebug-jsmin.js, "behaviors.js?v=11", notifier.js]
+  javascripts:    ["http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", soundmanager2-nodebug-jsmin.js, "behaviors.js?v=16", notifier.js]
 
   has_layout:     true
   layout:         layout

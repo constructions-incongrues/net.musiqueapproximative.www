@@ -24,83 +24,81 @@ window.notifyCurrentTrack = function() {
 $(document).ready(function() {
 
     // "Browse tracks"
-	$('#index-toggle').toggle(function(event) {
+    $('.index-toggle').click(function(event) {
+      $('#loading').fadeIn();
       $('#index').load($(event.target).attr('href'), function() {
-	      $('#index').show();
-	      $('#loading').fadeOut();
+        $('#loading').fadeOut();
+        if (!$('#index').is(':visible')) {
+          $('#index, #close').show();
+        }
       });
       return false;
-	}, function() {
-		$('#index, #loading').hide();
-		return false;
-	});
-	
+    });
+
+    $('#close a').click(function() {
+      $('#index, #close').hide();
+    });
+
     $('a.email-subscription-link').click(function(event) {
       $('div#email-subscription').toggle();
     });
 
     if (window.random) {
       var current_post_id = $('a#play').attr('x-js-postid');
-      $
-          .get(window.script_name + '/posts/random?current=' + current_post_id,
-              {}, function(data) {
-                $('a.past').attr(
-                    'href',
-                    data + '?play=' + window.autoplay + '&random='
-                        + window.random);
-              });
-      $
-          .get(window.script_name + '/posts/random?current=' + current_post_id,
-              {}, function(data) {
-                $('a.nav').attr(
-                    'href',
-                    data + '?play=' + window.autoplay + '&random='
-                        + window.random);
-              });
+      var urlRandom = window.script_name + '/posts/random?current=' + current_post_id + '&' + queryCommon;
+      var queryCommon = 'play=' + window.autoplay + '&random=' + window.random;
+      if (window.c != undefined) {
+        queryCommon += '&c=' + window.c;
+      }
+      $.get(urlRandom, {}, function(data) {
+        $('a.past').attr('href', data + '?' + queryCommon);
+      });
+      $.get(urlRandom, {}, function(data) {
+        $('a.nav').attr('href', data + '?' + queryCommon);
+      });
     }
 
     // Random button
     $('#random').click(
-        function(event) {
-          event.preventDefault();
-          var current_post_id = $('a#play').attr('x-js-postid');
-          if ($(this).hasClass('not')) {
-            $(this).removeClass('not');
-            window.random = 1;
-            $.get(window.script_name + '/posts/random?current='
-                + current_post_id, {}, function(data) {
-              $('a.past').attr(
-                  'href',
-                  data + '?play=' + window.autoplay + '&random='
-                      + window.random);
-            });
-            $.get(window.script_name + '/posts/random?current='
-                + current_post_id, {}, function(data) {
-              $('a.nav').attr(
-                  'href',
-                  data + '?play=' + window.autoplay + '&random='
-                      + window.random);
-            });
-          } else {
-            $(this).addClass('not');
-            window.random = 0;
-            $.get(
-                window.script_name + '/posts/prev?current=' + current_post_id,
-                {}, function(data) {
-                  $('a.past').attr(
-                      'href',
-                      data + '?play=' + window.autoplay + '&random='
-                          + window.random);
-                });
-            $.get(
-                window.script_name + '/posts/next?current=' + current_post_id,
-                {}, function(data) {
-                  $('a.nav').attr(
-                      'href',
-                      data + '?play=' + window.autoplay + '&random='
-                          + window.random);
-                });
+      function(event) {
+        event.preventDefault();
+        var current_post_id = $('a#play').attr('x-js-postid');
+        if ($(this).hasClass('not')) {
+          $(this).removeClass('not');
+          window.random = 1;
+          var queryCommon = 'play=' + window.autoplay + '&random=' + window.random;
+          if (window.c != undefined) {
+            queryCommon += '&c=' + window.c;
           }
+          var urlRandom = window.script_name + '/posts/random?current=' + current_post_id + '&' + queryCommon;
+          $.get(urlRandom, {}, function(data) {
+            $('a.past').attr('href', data + '?' + queryCommon);
+          });
+          $.get(urlRandom, {}, function(data) {
+            $('a.nav').attr('href', data + '?' + queryCommon);
+          });
+        } else {
+          $(this).addClass('not');
+          window.random = 0;
+          var queryCommon = 'play=' + window.autoplay + '&random=' + window.random;
+          if (window.c != undefined) {
+            queryCommon += '&c=' + window.c;
+          }
+          $.get(
+            window.script_name + '/posts/prev?current=' + current_post_id + '&' + queryCommon,
+            {}, function(data) {
+              $('a.past').attr(
+                'href',
+                data + '?' + queryCommon);
+            });
+          $.get(
+            window.script_name + '/posts/next?current=' + current_post_id + '&' + queryCommon,
+            {}, function(data) {
+              $('a.nav').attr(
+                'href',
+                data + '?' + queryCommon);
+            });
+        }
 
           // TODO : get appropriate information and update links titles
           $('a.nav').attr('title', '');
@@ -117,16 +115,16 @@ $(document).ready(function() {
         autoPlay : window.autoplay,
         whileloading : function() {
           $('div.loading').css('width',
-              (((this.bytesLoaded / this.bytesTotal) * 100) + '%'));
+            (((this.bytesLoaded / this.bytesTotal) * 100) + '%'));
           $('#timing span.total').text(
-              window.getTime(this.durationEstimate, true));
+            window.getTime(this.durationEstimate, true));
         },
         onplay : function() {
           window.notifyCurrentTrack();
         },
         whileplaying : function() {
           $('div.position').css('width',
-              (((this.position / this.durationEstimate) * 100) + '%'));
+            (((this.position / this.durationEstimate) * 100) + '%'));
           $('#timing span.current').text(window.getTime(this.position, true));
         },
         onfinish : function() {
@@ -136,30 +134,30 @@ $(document).ready(function() {
       });
 
       $('div.statusbar').click(
-          function(event) {
-            if (window.sound) {
-              var position = (event.pageX - this.offsetLeft)
-                  / $('div.statusbar').width() * 100;
-              window.sound.setPosition(window.sound.durationEstimate / 100
-                  * position);
-              $('div.position').css('width', position + '%');
-            }
-          });
-
-      $('a#play').click(function(event) {
-        event.preventDefault();
-        window.sound.play();
-      });
-
-      $('a#pause').click(function(event) {
-        event.preventDefault();
-        window.sound.togglePause();
-      });
-
-      $('a#stop').click(function(event) {
-        event.preventDefault();
-        window.sound.stop();
-        $('div.position').css('width', '0%');
-      });
-    };
+        function(event) {
+          if (window.sound) {
+            var position = (event.pageX - this.offsetLeft)
+            / $('div.statusbar').width() * 100;
+            window.sound.setPosition(window.sound.durationEstimate / 100
+              * position);
+      $('div.position').css('width', position + '%');
+    }
   });
+
+$('a#play').click(function(event) {
+  event.preventDefault();
+  window.sound.play();
+});
+
+$('a#pause').click(function(event) {
+  event.preventDefault();
+  window.sound.togglePause();
+});
+
+$('a#stop').click(function(event) {
+  event.preventDefault();
+  window.sound.stop();
+  $('div.position').css('width', '0%');
+});
+};
+});

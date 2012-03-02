@@ -11,7 +11,7 @@
 class postActions extends sfActions
 {
   /**
-   * Displays a post. if no id explicitely set, last post is shown. 
+   * Displays a post. if no id explicitely set, last post is shown.
    *
    * @param sfRequest $request A request object
    */
@@ -24,7 +24,12 @@ class postActions extends sfActions
     $this->forward404Unless($post);
 
     // Set specific page title
-    $this->getResponse()->setTitle(sprintf('%s - %s | Musique Approximative', $post->track_author, $post->track_title));
+    $title = sprintf('%s - %s', $post->track_author, $post->track_title);
+    if ($request->getParameter('c'))
+    {
+      $title .= sprintf(' | Playlist de %s', $post->getContributorDisplayName());
+    }
+    $this->getResponse()->setTitle(sprintf('%s | Musique Approximative', $title));
 
     // Get number of online posts
     $posts_count = Doctrine::getTable('Post')->countOnlinePosts();
@@ -38,18 +43,41 @@ class postActions extends sfActions
     $this->getResponse()->addMeta('og:audio:artist', $post->track_author);
     $this->getResponse()->addMeta('og:audio:album', 'Unknown album');
     $this->getResponse()->addMeta('og:audio:type', 'application/mp3');
-    
+
+    // Gather common query parameters
+    $common_parameters = array(
+      'play'   => $request->getParameter('play', 1),
+      'random' => $request->getParameter('random', 0),
+    );
+    if ($request->getParameter('c'))
+    {
+      $common_parameters['c'] = $request->getParameter('c');
+    }
+    $common_query_string = '';
+    foreach ($common_parameters as $name => $value)
+    {
+      $common_query_string .= sprintf('%s=%s&', $name, $value);
+    }
+    $common_query_string = trim($common_query_string, '&');
+
     // Pass data to view
     $this->post = $post;
     $this->posts_count = $posts_count;
-    $this->post_next = Doctrine::getTable('Post')->getNextPost($post);
-    $this->post_previous = Doctrine::getTable('Post')->getPreviousPost($post);
+    $this->post_next = Doctrine::getTable('Post')->getNextPost($post, $request->getParameterHolder()->getAll());
+    $this->post_previous = Doctrine::getTable('Post')->getPreviousPost($post, $request->getParameterHolder()->getAll());
+    $this->common_query_string = $common_query_string;
   }
 
   public function executeHome(sfWebRequest $request)
   {
-    $this->forward404Unless($post = Doctrine::getTable('Post')->getLastPost());
-    $this->redirect('@post_show?slug='.$post->slug);
+    $filters = $request->getParameterHolder()->getAll();
+    $this->forward404Unless($post = Doctrine::getTable('Post')->getLastPost($filters));
+    $routeRedirect = '@post_show?slug='.$post->slug;
+    if (isset($filters['c']))
+    {
+      $routeRedirect .= '&c='.$filters['c'];
+    }
+    $this->redirect($routeRedirect);
   }
 
   public function executeList(sfWebRequest $request)
@@ -79,7 +107,7 @@ class postActions extends sfActions
     	$this->setLayout($formats[$request->getParameter('sf_format')]['layout']);
     	$this->getResponse()->setContentType($formats[$request->getParameter('sf_format')]['contentType']);
     }
-    
+
     // Pass data to view
     $this->posts = $posts;
     $this->list_title = $list_title;
@@ -134,33 +162,39 @@ class postActions extends sfActions
     }
     $this->feed = $feed;
   }
-  
+
   public function executeRandom(sfWebRequest $request)
   {
-  	$post = Doctrine::getTable('Post')->getRandomPost();
-  	
+  	$post = Doctrine::getTable('Post')->getRandomPost($request->getParameterHolder()->getAll());
+
   	sfConfig::set('sf_web_debug', false);
-  	
+
   	// Pass data to view
   	$this->post = $post;
   }
-  
+
+  /**
+   * Returns next post.
+   *
+   * @param  sfWebRequest $request
+   * @return string
+   */
   public function executeNext(sfWebRequest $request)
   {
-  	$post = Doctrine::getTable('Post')->getNextPost(Doctrine::getTable('Post')->find($request->getParameter('current')));
-  	
+  	$post = Doctrine::getTable('Post')->getNextPost(Doctrine::getTable('Post')->find($request->getParameter('current')), $request->getParameterHolder()->getAll());
+
   	sfConfig::set('sf_web_debug', false);
-  	
+
   	// Pass data to view
   	$this->post = $post;
   }
-  
+
   public function executePrev(sfWebRequest $request)
   {
-  	$post = Doctrine::getTable('Post')->getPreviousPost(Doctrine::getTable('Post')->find($request->getParameter('current')));
-  	
+  	$post = Doctrine::getTable('Post')->getPreviousPost(Doctrine::getTable('Post')->find($request->getParameter('current')), $request->getParameterHolder()->getAll());
+
   	sfConfig::set('sf_web_debug', false);
-  	
+
   	// Pass data to view
   	$this->post = $post;
   }

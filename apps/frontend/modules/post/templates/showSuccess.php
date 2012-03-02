@@ -2,15 +2,23 @@
 
 <script type="text/javascript">
 // Those variables are used in behaviors.js
-soundManager.url = '<?php echo $sf_request->getRelativeUrlRoot() ?>/swf/';
+soundManager.url   = '<?php echo $sf_request->getRelativeUrlRoot() ?>/swf/';
 window.script_name = '<?php echo $sf_request->getScriptName() ?>';
 window.autoplay    = <?php echo $sf_request->getParameter('play', 0) ?>;
 window.random      = <?php echo $sf_request->getParameter('random', 0) ?>;
+<?php if ($sf_request->getParameter('c')): ?>
+window.c           = '<?php echo $sf_request->getParameter('c') ?>';
+<?php endif; ?>
 </script>
 
 <div id="browse-all">
   <p>
-    <?php echo link_to(sprintf('Browse all tracks (%d)', $posts_count), '@post_list', array('id' => 'index-toggle')) ?> <span id="loading" style="display: none;">(loading...)</span>
+    <?php echo link_to(sprintf('Browse all tracks (%d)', $posts_count), '@post_list', array('class' => 'index-toggle')) ?>
+<?php if ($sf_request->getParameter('c')): ?>
+  <?php echo link_to(sprintf(' | Browse tracks by %s', $post->getContributorDisplayName()), '@post_list?contributor='.$sf_request->getParameter('c'), array('class' => 'index-toggle')) ?>
+<?php endif; ?>
+    <span id="close" style="display: none;"><a href=""> | close</a></span>
+    <span id="loading" style="display: none;">(loading...)</span>
   </p>
 </div>
 
@@ -28,16 +36,16 @@ window.random      = <?php echo $sf_request->getParameter('random', 0) ?>;
 
     <p id="navbar">
       <?php if ($post_previous): ?>
-        <?php echo link_to(image_tag('left-epsilon.jpg'), sprintf('@post_show?slug=%s&play=%d&random=%d', $post_previous->slug, $sf_request->getParameter('play', 1), $sf_request->getParameter('random', 0)), array('class' => 'past', 'title' => sprintf('%s - %s', $post_previous->track_author, $post_previous->track_title))) ?>
+        <?php echo link_to(image_tag('left-epsilon.jpg'), sprintf('@post_show?slug=%s&%s', $post_previous->slug, $sf_data->getRaw('common_query_string')), array('class' => 'past', 'title' => sprintf('%s - %s', $post_previous->track_author, $post_previous->track_title))) ?>
       <?php endif; ?>
       <?php if ($post_next): ?>
-        <?php echo link_to(image_tag('right-epsilon.jpg'), sprintf('@post_show?slug=%s&play=%d&random=%d', $post_next->slug, $sf_request->getParameter('play', 1), $sf_request->getParameter('random', 0)), array('class' => 'nav', 'title' => sprintf('%s - %s', $post_next->track_author, $post_next->track_title))) ?>
+        <?php echo link_to(image_tag('right-epsilon.jpg'), sprintf('@post_show?slug=%s&%s', $post_next->slug, $sf_data->getRaw('common_query_string')), array('class' => 'nav', 'title' => sprintf('%s - %s', $post_next->track_author, $post_next->track_title))) ?>
       <?php endif; ?>
     </p>
 
     <p><?php echo Markdown($post->body) ?></p>
 
-    <p id="author">par <a href="<?php echo url_for('@post_list?contributor='.$post->getSfGuardUser()->username) ?>" title="Voir toutes les contributions de <?php echo $post->getContributorDisplayName() ?>"><?php echo $post->getContributorDisplayName() ?></a></p>
+    <p id="author">par <a href="<?php echo $post->getSfGuardUser()->UserProfile->website_url ?>" title="Accéder au site internet de <?php echo $post->getContributorDisplayName() ?>"><?php echo $post->getContributorDisplayName() ?></a></p>
 
     <div>
       <div class="controls">
@@ -68,7 +76,7 @@ window.random      = <?php echo $sf_request->getParameter('random', 0) ?>;
 
    </p>
    <p style="font-size: 0.7em;">
-     [<a id="random" title="Trigger random mode" class="<?php echo $sf_request->getParameter('random', false) ? '' : 'not' ?>" href="<?php echo url_for(sprintf('@post_show?slug=%s&play=%s&random=%s', $post->slug, $sf_request->getParameter('random', '0'), $sf_request->getParameter('play', '0')))?>">Random</a>]
+     [<a id="random" title="Trigger random mode" class="<?php echo $sf_request->getParameter('random', false) ? '' : 'not' ?>" href="<?php echo url_for(sprintf('@post_show?slug=%s&%s', $post->slug, $sf_data->getRaw('common_query_string')))?>">Random</a>]
    </p>
 
   </div>

@@ -6,11 +6,12 @@ class PostTable extends Doctrine_Table
 
   /**
    * Returns last online post.
-   * 
+   *
    * @return Post
    */
-  public function getLastPost()
+  public function getLastPost(array $filters = array())
   {
+    // Build base query
     $q = Doctrine_Query::create()
       ->select(self::FIELDS_BASIC)
       ->from('Post p')
@@ -18,6 +19,14 @@ class PostTable extends Doctrine_Table
       ->where('p.is_online = 1 and p.publish_on <= date_add(now(), interval 2 hour)')
       ->orderBy('p.publish_on DESC')
       ->limit(1);
+
+    // Add additional filters
+    if (isset($filters['c']))
+    {
+      $q->andWhere('u.username = ?', $filters['c']);
+    }
+
+    // Fetch posts
     $post = $q->fetchOne();
     $q->free();
 
@@ -36,7 +45,7 @@ class PostTable extends Doctrine_Table
 
     return $post;
   }
-  
+
   public function getOnlinePostById($post_id)
   {
     $q = Doctrine_Query::create()
@@ -56,8 +65,9 @@ class PostTable extends Doctrine_Table
    * @param  Post $post
    * @return Post
    */
-  public function getNextPost(Post $post)
+  public function getNextPost(Post $post, array $filters = array())
   {
+    // Build base query
     $q = Doctrine_Query::create()
       ->select(self::FIELDS_BASIC)
       ->from('Post p')
@@ -65,6 +75,14 @@ class PostTable extends Doctrine_Table
       ->where('p.is_online = 1 and p.publish_on > ? and p.publish_on <= date_add(now(), interval 2 hour)')
       ->orderBy('p.publish_on ASC')
       ->limit(1);
+
+    // Add additional filters
+    if (isset($filters['c']))
+    {
+      $q->andWhere('u.username = ?', $filters['c']);
+    }
+
+    // Fetch posts
     $post = $q->fetchOne(array($post->publish_on));
     $q->free();
 
@@ -77,8 +95,9 @@ class PostTable extends Doctrine_Table
    * @param  Post $post
    * @return Post
    */
-  public function getPreviousPost(Post $post)
+  public function getPreviousPost(Post $post, array $filters = array())
   {
+    // Build base query
     $q = Doctrine_Query::create()
       ->select(self::FIELDS_BASIC)
       ->from('Post p')
@@ -86,6 +105,14 @@ class PostTable extends Doctrine_Table
       ->where('p.is_online = 1 and p.publish_on < ?')
       ->orderBy('p.publish_on DESC')
       ->limit(1);
+
+    // Add additional filters
+    if (isset($filters['c']))
+    {
+      $q->andWhere('u.username = ?', $filters['c']);
+    }
+
+    // Fetch results
     $post = $q->fetchOne(array($post->publish_on));
     $q->free();
 
@@ -146,14 +173,24 @@ class PostTable extends Doctrine_Table
    * @param  Post $post
    * @return Post
    */
-  public function getRandomPost()
+  public function getRandomPost(array $filters = array())
   {
+    // Build base query
     $q = Doctrine_Query::create()
       ->select(self::FIELDS_BASIC)
       ->from('Post p')
+      ->leftJoin('p.sfGuardUser u on p.contributor_id = u.id')
       ->where('p.is_online = 1 and p.publish_on <= date_add(now(), interval 2 hour)')
       ->orderBy('rand()')
       ->limit(1);
+
+    // Add additional filters
+    if (isset($filters['c']))
+    {
+      $q->andWhere('u.username = ?', $filters['c']);
+    }
+
+    // Fetch posts
     $post = $q->fetchOne();
     $q->free();
 
