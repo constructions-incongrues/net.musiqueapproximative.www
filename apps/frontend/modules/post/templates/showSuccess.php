@@ -15,7 +15,12 @@ window.c           = '<?php echo $sf_request->getParameter('c') ?>';
   <p>
     <?php echo link_to(sprintf('Browse all tracks (%d)', $posts_count), '@post_list', array('class' => 'index-toggle')) ?>
 <?php if ($sf_request->getParameter('c')): ?>
-  <?php echo link_to(sprintf(' | Browse tracks by %s', $post->getContributorDisplayName()), '@post_list?contributor='.$sf_request->getParameter('c'), array('class' => 'index-toggle')) ?>
+  <a> | </a>
+  <?php echo link_to(sprintf('Browse tracks by %s', $post->getContributorDisplayName()), '@post_list?contributor='.$sf_request->getParameter('c'), array('class' => 'index-toggle')) ?>
+  <?php if ($contributor->UserProfile->website_url): ?>
+    <a> | </a>
+    <?php echo link_to($contributor->UserProfile->website_url, $contributor->UserProfile->website_url, array('title' => 'Accéder au site internet de '.$contributor->username)); ?>
+  <?php endif; ?>
 <?php endif; ?>
     <span id="close" style="display: none;"><a href=""> | close</a></span>
     <span id="loading" style="display: none;">(loading...)</span>
@@ -45,7 +50,7 @@ window.c           = '<?php echo $sf_request->getParameter('c') ?>';
 
     <p><?php echo Markdown($post->body) ?></p>
 
-    <p id="author">par <a href="<?php echo $post->getSfGuardUser()->UserProfile->website_url ?>" title="Accéder au site internet de <?php echo $post->getContributorDisplayName() ?>"><?php echo $post->getContributorDisplayName() ?></a></p>
+    <p id="author">par <a href="<?php echo url_for('@homepage?c='.$post->getSfGuardUser()->username) ?>" title="Écouter la playlist de <?php echo $post->getContributorDisplayName() ?>"><?php echo $post->getContributorDisplayName() ?></a></p>
 
     <div>
       <div class="controls">

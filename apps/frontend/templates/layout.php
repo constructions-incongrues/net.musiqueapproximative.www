@@ -31,7 +31,6 @@
     <?php echo $sf_content ?>
 
     <div id="maintitle">Musique Approximative</div>
-
     <div id="about">
       <p>Ceci est un <em>micropodcast</em>. Vous y trouverez un flux de morceaux glanés au fil du web. </p>
       <p>Cliquez sur le nom d'un contributeur pour écouter sa playlist</p>

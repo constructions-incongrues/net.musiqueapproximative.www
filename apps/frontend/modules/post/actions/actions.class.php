@@ -66,6 +66,7 @@ class postActions extends sfActions
     $this->post_next = Doctrine::getTable('Post')->getNextPost($post, $request->getParameterHolder()->getAll());
     $this->post_previous = Doctrine::getTable('Post')->getPreviousPost($post, $request->getParameterHolder()->getAll());
     $this->common_query_string = $common_query_string;
+    $this->contributor = $post->getSfGuardUser();
   }
 
   public function executeHome(sfWebRequest $request)
