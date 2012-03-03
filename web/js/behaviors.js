@@ -37,6 +37,7 @@ $(document).ready(function() {
 
     $('#close a').click(function() {
       $('#index, #close').hide();
+      return false;
     });
 
     $('a.email-subscription-link').click(function(event) {
@@ -45,11 +46,11 @@ $(document).ready(function() {
 
     if (window.random) {
       var current_post_id = $('a#play').attr('x-js-postid');
-      var urlRandom = window.script_name + '/posts/random?current=' + current_post_id + '&' + queryCommon;
       var queryCommon = 'play=' + window.autoplay + '&random=' + window.random;
       if (window.c != undefined) {
         queryCommon += '&c=' + window.c;
       }
+      var urlRandom = window.script_name + '/posts/random?current=' + current_post_id + '&' + queryCommon;
       $.get(urlRandom, {}, function(data) {
         $('a.past').attr('href', data + '?' + queryCommon);
       });
