@@ -19,7 +19,7 @@ class PostForm extends BasePostForm
     $this->validatorSchema['track_filename'] = new sfValidatorFile(array(
       'required'              => $this->getObject()->isNew(),
       'path'                  => sfConfig::get('sf_web_dir').'/tracks',
-      'mime_types'            => array('audio/mpeg'),
+      'mime_types'            => array('audio/mpeg', 'application/octet-stream'),
       'validated_file_class'  => 'maValidatedFile'
     ));
 
