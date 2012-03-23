@@ -35,7 +35,7 @@
       <p>Ceci est un <em>micropodcast</em>. Vous y trouverez un flux de morceaux glanés au fil du web. </p>
       <p>Cliquez sur le nom d'un contributeur pour écouter sa playlist</p>
       <p>
-        <strong>Contributeurs : </strong>
+        <strong>Contributeurs : </strong> 
         <?php include_component('post', 'contributors') ?>
       </p>
       <p>
@@ -56,7 +56,7 @@
         </div>
       </p>
       <p>
-        Musique Approximative v0.4.3 est développé par <a href="http://www.constructions-incongrues.net/">Constructions Incongrues</a>
+        Musique Approximative est développé par <a href="http://www.constructions-incongrues.net/">Constructions Incongrues</a>
         et est hébergé par <a href="http://www.pastis-hosting.net">Pastis Hosting</a>.
       </p>
       <p>
