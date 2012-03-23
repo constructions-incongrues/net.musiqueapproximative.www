@@ -39,3 +39,6 @@ all:
 
     # Enable the database manager
     use_database:           true
+
+    # Set default culture to french
+    default_culture: fr_FR
