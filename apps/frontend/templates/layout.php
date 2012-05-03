@@ -6,11 +6,7 @@
 
     <!-- Opengraph -->
     <meta property="og:site_name" content="Musique Approximative" />
-    <meta property="og:title" content="<?php echo $sf_response->getTitle() ?>" />
-    <meta property="og:type" content="song" />
-    <meta property="og:url" content="<?php echo sprintf('http://%s%s', $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI']) ?>" />
-    <meta property="og:image" content="http://musiqueapproximative.net/images/logo.png" />
-
+    
     <?php include_title() ?>
     <link rel="shortcut icon" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/images/favico.png" />
     <link rel="alternate" type="application/xspf+xml" title="La playlist au format XSPF" href="<?php echo url_for('@post_list?sf_format=xspf') ?>" />

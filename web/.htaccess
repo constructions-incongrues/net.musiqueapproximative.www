@@ -22,7 +22,9 @@ Options +FollowSymLinks +ExecCGI
 </IfModule>
 
 # Enabling mod_pagespeed results in wrong URLs in "Browse all tracks"
-ModPagespeed off
+<IfModule pagespeed_module>
+  ModPagespeed off
+</IfModule>
 
 # Newrelic configuration
 php_value newrelic.appname "Musique Approximative"

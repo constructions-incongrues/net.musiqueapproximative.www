@@ -37,12 +37,12 @@ class postActions extends sfActions
     // Define opengraph metadata (see http://ogp.me/)
     $this->getContext()->getConfiguration()->loadHelpers('Markdown');
     $this->getResponse()->addMeta('og:description', strip_tags(Markdown($post->body)));
+    $this->getResponse()->addMeta('og:type', 'video');
     $this->getResponse()->addMeta('og:image', 'http://musiqueapproximative.net/images/logo.png');
-    $this->getResponse()->addMeta('og:audio', sprintf('http://www.musiqueapproximative.net/tracks/%s', $post->track_filename));
-    $this->getResponse()->addMeta('og:audio:title', $post->track_title);
-    $this->getResponse()->addMeta('og:audio:artist', $post->track_author);
-    $this->getResponse()->addMeta('og:audio:album', 'Unknown album');
-    $this->getResponse()->addMeta('og:audio:type', 'application/mp3');
+    $this->getResponse()->addMeta('og:video', sprintf('http://www.musiqueapproximative.net/swf/mediaplayer-5.9/player.swf?autostart=true&file=%s', urlencode('http://www.musiqueapproximative.net/tracks/'.$post->track_filename)));
+    $this->getResponse()->addMeta('og:video:type', 'application/x-shockwave-flash');
+    $this->getResponse()->addMeta('og:video:height', '100');
+    $this->getResponse()->addMeta('og:video:width', '500');
 
     // Gather common query parameters
     $common_parameters = array(

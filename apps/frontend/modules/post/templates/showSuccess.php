@@ -67,7 +67,7 @@ window.c           = '<?php echo $sf_request->getParameter('c') ?>';
    <p style="clear:both;"></p>
 
    <p>
-   	<center id="track-infos"><span title="Posté le <?php echo strftime('%d/%M/%Y', $post->getDateTimeObject('created_at')->getTimestamp()) ?> à <?php echo $post->getDateTimeObject('created_at')->format('H:i') ?>"><?php echo $post->track_author ?> - <?php echo $post->track_title ?></span></center>
+   	<center id="track-infos"><span title="Posté le <?php echo strftime('%d/%m/%Y', $post->getDateTimeObject('created_at')->getTimestamp()) ?> à <?php echo $post->getDateTimeObject('created_at')->format('H:i') ?>"><?php echo $post->track_author ?> - <?php echo $post->track_title ?></span></center>
    </p>
 
    <p>
