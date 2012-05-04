@@ -6,10 +6,14 @@
 
     <!-- Opengraph -->
     <meta property="og:site_name" content="Musique Approximative" />
-    
+
     <?php include_title() ?>
     <link rel="shortcut icon" href="<?php echo $sf_request->getRelativeUrlRoot() ?>/images/favico.png" />
     <link rel="alternate" type="application/xspf+xml" title="La playlist au format XSPF" href="<?php echo url_for('@post_list?sf_format=xspf') ?>" />
+
+    <!-- oEmbed -->
+    <link rel="alternate" type="application/json+oembed" href="<?php echo url_for('@post_oembed?format=json&url=http://www.musiqueapproximative.net'.$_SERVER['REQUEST_URI'], true) ?>" />
+    <link rel="alternate" type="text/xml+oembed" href="<?php echo url_for('@post_oembed?format=xml&url=http://www.musiqueapproximative.net'.$_SERVER['REQUEST_URI'], true) ?>" />
 
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>

@@ -38,7 +38,7 @@ class postActions extends sfActions
     $this->getContext()->getConfiguration()->loadHelpers('Markdown');
     $this->getResponse()->addMeta('og:description', strip_tags(Markdown($post->body)));
     $this->getResponse()->addMeta('og:type', 'video');
-    $this->getResponse()->addMeta('og:image', 'http://musiqueapproximative.net/images/logo.png');
+    $this->getResponse()->addMeta('og:image', 'http://www.musiqueapproximative.net/images/logo.png');
     $this->getResponse()->addMeta('og:video', sprintf('http://www.musiqueapproximative.net/swf/mediaplayer-5.9/player.swf?autostart=true&file=%s', urlencode('http://www.musiqueapproximative.net/tracks/'.$post->track_filename)));
     $this->getResponse()->addMeta('og:video:type', 'application/x-shockwave-flash');
     $this->getResponse()->addMeta('og:video:height', '100');
@@ -67,6 +67,15 @@ class postActions extends sfActions
     $this->post_previous = Doctrine::getTable('Post')->getPreviousPost($post, $request->getParameterHolder()->getAll());
     $this->common_query_string = $common_query_string;
     $this->contributor = $post->getSfGuardUser();
+
+    // Select template
+    if ($request->hasParameter('embed')) {
+      $templateName = 'Embed'.ucfirst($request->getParameter('embed'));
+    } else {
+      $templateName = sfView::SUCCESS;
+    }
+
+    return $templateName;
   }
 
   public function executeHome(sfWebRequest $request)
@@ -198,5 +207,48 @@ class postActions extends sfActions
 
   	// Pass data to view
   	$this->post = $post;
+  }
+
+  public function executeOembed(sfWebRequest $request)
+  {
+    // Retrieve appropriate post from database
+    $post = Doctrine::getTable('Post')->getOnlinePostBySlug(basename($request->getParameter('url')));
+
+    // Throw a 404 error if no post is found
+    $this->forward404Unless($post);
+
+    // Build data array
+    $this->getContext()->getConfiguration()->loadHelpers('Markdown');
+    $data = array(
+      'version'       => 1,
+      'type'          => 'rich',
+      'provider_name' => 'MusiqueApproximative',
+      'provider_url'  => 'http://www.musiqueapproximative.net',
+      'height'        => 220,
+      'width'         => 510,
+      'title'         => sprintf('%s - %s', $post->track_author, $post->track_title),
+      'description'   => strip_tags(Markdown($post->body)),
+      'html'          => sprintf('<iframe width="510" height="220" scrolling="no" frameborder="no" src="%s?embed"></iframe>', $this->getController()->genUrl('@post_show?slug='.$post->slug, true))
+    );
+
+    // Encode data depending on requested format
+    if ($request->getParameter('format', 'json') == 'json') {
+      $dataEncoded = json_encode($data);  
+      // $this->getResponse()->setContentType('application/json+oembed');
+      $this->getResponse()->setContentType('application/json');
+    } else if ($request->getParameter('format', 'json') == 'xml') {
+      $xml = new SimpleXMLElement('<oembed/>');
+      foreach ($data as $key => $value) {
+        $xml->addChild($key, htmlentities($value));
+      }
+      $dataEncoded = $xml->asXml();
+      $this->getResponse()->setContentType('text/xml+oembed');
+    }
+
+    // Pass data to view
+    $this->data = $dataEncoded;
+    
+    // Select template
+    return sfView::SUCCESS;
   }
 }
