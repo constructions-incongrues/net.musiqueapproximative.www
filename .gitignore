@@ -10,6 +10,5 @@
 # symfony
 /src/cache
 /src/log
-/src/web/sf
 /src/web/tracks
 /src/data/sql
