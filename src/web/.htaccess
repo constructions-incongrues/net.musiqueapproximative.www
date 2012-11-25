@@ -1,0 +1,32 @@
+Options +FollowSymLinks +ExecCGI
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # uncomment the following line, if you are having trouble
+  # getting no_script_name to work
+  #RewriteBase /
+
+  # we skip all files with .something
+  #RewriteCond %{REQUEST_URI} \..+$
+  #RewriteCond %{REQUEST_URI} !\.html$
+  #RewriteRule .* - [L]
+
+  # we check if the .html version is here (caching)
+  RewriteRule ^$ index.html [QSA]
+  RewriteRule ^([^.]+)$ $1.html [QSA]
+  RewriteCond %{REQUEST_FILENAME} !-f
+
+  # no, so we redirect to our front web controller
+  RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+# Enabling mod_pagespeed results in wrong URLs in "Browse all tracks"
+<IfModule pagespeed_module>
+  ModPagespeed off
+</IfModule>
+
+# Newrelic configuration
+php_value newrelic.appname "Musique Approximative"
+php_value newrelic.error_collector.record_database_errors 1
+php_value newrelic.framework "symfony"

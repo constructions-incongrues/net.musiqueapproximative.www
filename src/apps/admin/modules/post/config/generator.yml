@@ -1,0 +1,56 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Post
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          post
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+    css:                   nothing
+
+    config:
+      actions: ~
+      fields:
+        body:
+          label: "Message"
+          help: |
+            Un petit message présentant le morceau posté.
+            Il peut être mis en forme avec la syntax Markdown : http://daringfireball.net/projects/markdown/syntax
+        track_title: { label: "Titre du morceau" }
+        track_author: { label: "Auteur du morceau" }
+        track_filename: { label: "Le morceau !", help: "Au format MP3." }
+        publish_on:
+          label: "Date de publication"
+          help: "Date et heure à laquelle le morceau sera publié."
+        is_unique:
+          label: "Morceau inédit ?"
+          help: "Cocher la case pour vérifier que le morceau n'a pas déjà été posté sur le site."
+        is_online:
+          label: "Activer ?"
+          help: "Si la case n est pas cochée, le morceau n est pas affiché sur le site."
+        buy_url:
+          label: "Lien pour acheter"
+          help: "Éventuel lien permettant d'acheter les productions de l'artiste sus-mentionné"
+      list:
+        display: [=track_title, track_author, publish_on, is_online]
+      filter: 
+        class: false
+      form: 
+        display: 
+          Track: [body, _body_preview, track_author, track_title, track_filename]
+          Support: [buy_url]
+          Publication: [publish_on, is_unique, is_online]
+      edit:
+        display: 
+          Track: [body, _body_preview, track_author, track_title, track_filename]
+          Support: [buy_url]
+          Publication: [publish_on, is_online]
+      new:
+        display: 
+          Track: [body, _body_preview, track_author, track_title, track_filename]
+          Support: [buy_url]
+          Publication: [publish_on, is_unique, is_online]      
