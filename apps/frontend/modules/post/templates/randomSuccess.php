@@ -1,1 +1,0 @@
-<?php echo url_for('@post_show?slug='.$post->slug) ?>

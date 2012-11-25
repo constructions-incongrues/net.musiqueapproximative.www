@@ -1,2 +1,0 @@
-all:
-  javascripts: [admin/behaviors.js?v=1]

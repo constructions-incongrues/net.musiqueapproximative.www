@@ -1,8 +1,8 @@
-.buildpath
-.project
-.settings/
-cache/*
-log/*
-web/sf
-web/tracks/*
-data/sql
+src/cache/*
+src/log/*
+src/web/sf
+src/web/tracks/*
+src/data/sql
+
+# dist
+src/config/databases.yml
