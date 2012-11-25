@@ -1,5 +1,6 @@
 # abt
 /src/config/databases.yml
+/etc/prod
 
 # composer
 /vendor
