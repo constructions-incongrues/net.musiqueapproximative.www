@@ -1,0 +1,7 @@
+all:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn: 'mysql:host=@database.main.hostname@;dbname=@database.main.name@'
+      username: @database.main.username@
+      password: @database.main.password@

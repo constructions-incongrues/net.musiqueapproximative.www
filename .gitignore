@@ -1,8 +1,15 @@
-src/cache/*
-src/log/*
-src/web/sf
-src/web/tracks/*
-src/data/sql
+# abt
+/src/config/databases.yml
 
-# dist
-src/config/databases.yml
+# composer
+/vendor
+
+# ide
+*.bak
+
+# symfony
+/src/cache
+/src/log
+/src/web/sf
+/src/web/tracks
+/src/data/sql
