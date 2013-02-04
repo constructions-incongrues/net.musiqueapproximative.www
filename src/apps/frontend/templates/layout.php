@@ -60,7 +60,7 @@
         et est hébergé par <a href="http://www.pastis-hosting.net">Pastis Hosting</a>.
       </p>
       <p>
-        Le code source du projet est <a href="https://github.com/contructions-incongrues/musique-approximative">distribué</a> sous licence
+        Le code source du projet est <a href="https://github.com/constructions-incongrues/net.musiqueapproximative.www">distribué</a> sous licence
         <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU AGPLv3</a>.
       </p>
       <p>Contact : bertier at musiqueapproximative point net</p>
