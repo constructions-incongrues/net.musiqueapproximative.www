@@ -104,6 +104,11 @@ font-size:4em;
 #navbar .past {float:left;margin-top:-30px;margin-left:-60px;padding-top:0px;}
 #navbar .nav  {float:right;margin-top:-30px;margin-right:-60px;padding-top:0px;}
 
+/*flèche gauche rectification*/
+.nav-l img {
+padding-top: 216px;
+padding-bottom: 216px;
+}
 
 #maintitle {
 font-family: sans-serif;
