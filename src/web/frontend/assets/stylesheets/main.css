@@ -100,7 +100,9 @@ div.descriptif p {font-size: 1.2rem;padding-top: 0;}
 @media all and (max-width:767px) {.contributors {margin-left: -20px;}}
 @media all and (min-width:800px) {.descriptif {text-align: center;}}
 
-.nav-l img,.nav-r {vertical-align: middle;}
+/*Rustine Positionnement Fleche gauche*/
+.nav-l img{padding:216px 0px 216px 0px}
+.nav-r {vertical-align: middle;}/*inutile*/
 
 
 /* search */
