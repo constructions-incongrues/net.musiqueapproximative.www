@@ -1,5 +1,8 @@
 <?php
 
+use AssetGatherer\AssetGatherer;
+use Nyholm\Psr7\ServerRequest;
+
 /**
  * post actions.
  *
@@ -22,6 +25,22 @@ class postActions extends sfActions
 
     // Throw a 404 error if no post is found
     $this->forward404Unless($post);
+
+    $gatherer = new AssetGatherer();
+    $gatherer->loadConfiguration(__DIR__.'/../../../config/asset-gatherer/bundles.yml');
+    $psrRequest = new ServerRequest(
+      $request->getMethod(), 
+      $this->getContext()->getRequest()->getUri(), 
+    );
+    $psrRequest = $psrRequest->withQueryParams([
+        "artist" => $post->track_author, 
+        "title" => $post->track_title, 
+        "contributor" => strtolower($post->getContributorDisplayName())
+      ] + $request->getParameterHolder()->getAll()
+    );
+
+    $gatherer->gatherAssetsForRequest($psrRequest);
+    print_r($gatherer->getAssets());exit;
 
     // Set specific page title
     $title = sprintf('%s - %s', $post->track_author, $post->track_title);

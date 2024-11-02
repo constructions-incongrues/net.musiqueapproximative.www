@@ -1,0 +1,7 @@
+carton:
+  images:
+    directories: [web/asset-gatherer/bundles/carton/images]
+    extensions: [jpg, gif, png]
+  rules:
+    query:
+      contributor: carton
