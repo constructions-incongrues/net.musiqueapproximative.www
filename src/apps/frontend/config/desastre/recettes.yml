@@ -92,5 +92,5 @@ mort:
   rules:
     query:
       title:
-        regex: /.*(mort|death|dead).*/i
+        regex: /.*(morte?s?|death?s|dead).*/i
 
